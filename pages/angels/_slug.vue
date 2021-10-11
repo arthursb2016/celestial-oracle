@@ -56,7 +56,7 @@
 <script>
 import PageContainer from '~/components/PageContainer';
 
-const ANIMATION_DELAY = 800;
+const ANIMATION_DELAY = 600;
 
 export default {
   name: '',
@@ -99,7 +99,7 @@ export default {
       this.showContent = true;
       setTimeout(() => {
         this.showContentFooter = true;
-      }, ANIMATION_DELAY * 4)
+      }, ANIMATION_DELAY * 5)
     }, ANIMATION_DELAY);
   },
   methods: {},
@@ -164,7 +164,7 @@ export default {
       }
 
       ::v-deep .v-icon {
-        font-size: 3.3rem;
+        font-size: 2.6rem;
         opacity: 0.8;
       }
     }

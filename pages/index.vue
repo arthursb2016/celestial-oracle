@@ -115,7 +115,7 @@ export default {
       padding: 2rem;
       font-size: 2.25rem;
       border-radius: 2rem;
-      transition: 600ms ease-out;
+      transition: 1000ms ease-out;
 
       &.show {
         width: $page-box-width;
