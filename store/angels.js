@@ -12,4 +12,7 @@ export const getters = {
   angels(state) {
     return state.angels;
   },
+  getAngel: (state) => (slug) => {
+    return state.angels.find(angel => angel.slug === slug);
+  },
 };
