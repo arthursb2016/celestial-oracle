@@ -1,5 +1,5 @@
 <template>
-  <div>angel page</div>
+  <div class="container">angel page</div>
 </template>
 <script>
 export default {
@@ -18,5 +18,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
+.container {
+  width: $page-box-width;
+}
 </style>

@@ -47,7 +47,7 @@ export default {
   border: 2px solid $harsh-golden;
   color: white;
   border-radius: 2rem;
-  width: $home-box-width;
+  width: $page-box-width;
   margin: auto;
   margin-top: -3.75rem;
   padding: 1rem 2rem;

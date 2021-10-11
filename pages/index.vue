@@ -83,7 +83,7 @@ export default {
     },
     onClick() {
       const angel = this.angels[Math.floor(Math.random() * this.angels.length)];
-      this.$router.push(`/${angel.slug}`);
+      this.$router.push(`/angels/${angel.slug}`);
     },
   },
 };
@@ -118,7 +118,7 @@ export default {
       transition: 600ms ease-out;
 
       &.show {
-        width: $home-box-width;
+        width: $page-box-width;
         opacity: 1;
       }
     }
