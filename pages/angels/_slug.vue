@@ -109,14 +109,14 @@ export default {
 .body {
   width: 100%;
   height: 100%;
-  font-size: 1.75rem;
+  font-size: 1.8rem;
   color: white;
   font-family: FANTASY;
   letter-spacing: 0.1rem;
   padding-bottom: 1rem;
   display: flex;
   opacity: 0;
-  transition: 800ms ease-out;
+  transition: 1000ms ease-out;
 
   &.show {
     opacity: 1;
@@ -125,11 +125,12 @@ export default {
   .image-column {
     display: flex;
     flex-direction: column;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 
     .angel-image {
       max-width: 20rem;
       margin-bottom: 2rem;
+      max-height: 75%;
     }
   }
 
@@ -147,7 +148,7 @@ export default {
 
     .angel-description, .angel-phrase {
       text-align: justify;
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     .content-footer {
@@ -163,7 +164,7 @@ export default {
       }
 
       ::v-deep .v-icon {
-        font-size: 3.5rem;
+        font-size: 3.3rem;
         opacity: 0.8;
       }
     }
