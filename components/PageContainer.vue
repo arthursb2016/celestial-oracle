@@ -33,7 +33,7 @@ export default {
   background-color: $light-golden;
   border: 0.25rem solid $harsh-golden;
   border-bottom: 0px;
-  border-radius: 1rem;
+  border-radius: 2rem;
   padding: 2rem;
   margin: auto;
   margin-top: 43rem;
