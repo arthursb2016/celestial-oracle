@@ -36,6 +36,13 @@
         <div class="primary--text angel-phrase">
           "{{ angel.phrase }}"
         </div>
+        <div class="content-footer">
+          <v-icon
+            class="back-icon"
+          >
+            keyboard_return
+          </v-icon>
+        </div>
       </div>
     </div>
   </page-container>
@@ -118,6 +125,8 @@ export default {
 
   .content-column {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     padding-left: 2.5rem;
     text-align: center;
 
@@ -129,6 +138,13 @@ export default {
     .angel-description, .angel-phrase {
       text-align: justify;
       font-size: 2rem;
+    }
+
+    .content-footer {
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
     }
   }
 }
