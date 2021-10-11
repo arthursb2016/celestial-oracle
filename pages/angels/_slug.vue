@@ -36,9 +36,15 @@
         <div class="primary--text angel-phrase">
           "{{ angel.phrase }}"
         </div>
-        <div class="content-footer">
+        <div
+          class="content-footer"
+          :class="{
+            show: showContentFooter,
+          }"
+        >
           <v-icon
             class="back-icon"
+            @click="$router.push('/')"
           >
             keyboard_return
           </v-icon>
@@ -63,6 +69,7 @@ export default {
     return {
       showPage: false,
       showContent: false,
+      showContentFooter: false,
       angel: {},
     };
   },
@@ -90,6 +97,9 @@ export default {
     this.angel = { ...angel };
     setTimeout(() => {
       this.showContent = true;
+      setTimeout(() => {
+        this.showContentFooter = true;
+      }, ANIMATION_DELAY * 4)
     }, ANIMATION_DELAY);
   },
   methods: {},
@@ -145,6 +155,17 @@ export default {
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
+      opacity: 0;
+      transition: 1500ms ease out;
+
+      &.show {
+        opacity: 1;
+      }
+
+      ::v-deep .v-icon {
+        font-size: 3.5rem;
+        opacity: 0.8;
+      }
     }
   }
 }
