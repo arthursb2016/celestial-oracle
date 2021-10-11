@@ -3,6 +3,9 @@
     <div
       v-if="angel.slug"
       class="body"
+      :class="{
+        show: showContent,
+      }"
     >
       <div class="image-column">
         <v-img
@@ -10,20 +13,28 @@
           alt="Image of a beatiful Angel"
           class="angel-image"
         />
-        Image from:
-        <a
-          :href="angel.img_author_link"
-          target="_blank"
-        >
-          {{ angel.img_author }}
-        </a>
+        <div>
+          Image from:
+        </div>
+        <div>
+          <a
+            :href="angel.img_author_link"
+            target="_blank"
+            class="link"
+          >
+            {{ angel.img_author }}
+          </a>
+        </div>
       </div>
       <div class="content-column">
         <h1 class="angel-name">
           {{ angel.name }}
         </h1>
-        <div class="angel-description">
+        <div class="angel-description mb-8">
           {{ angel.description }}
+        </div>
+        <div class="primary--text angel-phrase">
+          "{{ angel.phrase }}"
         </div>
       </div>
     </div>
@@ -31,6 +42,8 @@
 </template>
 <script>
 import PageContainer from '~/components/PageContainer';
+
+const ANIMATION_DELAY = 800;
 
 export default {
   name: '',
@@ -42,6 +55,7 @@ export default {
   data() {
     return {
       showPage: false,
+      showContent: false,
       angel: {},
     };
   },
@@ -67,6 +81,9 @@ export default {
       return;
     }
     this.angel = { ...angel };
+    setTimeout(() => {
+      this.showContent = true;
+    }, ANIMATION_DELAY);
   },
   methods: {},
 };
@@ -81,10 +98,17 @@ export default {
   letter-spacing: 0.1rem;
   padding-bottom: 1rem;
   display: flex;
+  opacity: 0;
+  transition: 800ms ease-out;
+
+  &.show {
+    opacity: 1;
+  }
 
   .image-column {
     display: flex;
     flex-direction: column;
+    font-size: 1.5rem;
 
     .angel-image {
       max-width: 20rem;
@@ -102,10 +126,15 @@ export default {
       margin-bottom: 1rem;
     }
 
-    .angel-description {
+    .angel-description, .angel-phrase {
       text-align: justify;
       font-size: 2rem;
     }
   }
+}
+
+.link {
+  color: $text-grey;
+  text-decoration: none;
 }
 </style>
