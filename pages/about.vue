@@ -1,5 +1,5 @@
 <template>
-  <page-container>
+  <page-container :show="showPage">
     <div class="body">
       <h2>
         The Angels
@@ -27,10 +27,14 @@ export default {
   mixins: [],
   props: {},
   data() {
-    return {};
+    return {
+      showPage: false,
+    };
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    this.showPage = true;
+  },
   methods: {},
 };
 </script>

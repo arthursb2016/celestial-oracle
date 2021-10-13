@@ -1,5 +1,5 @@
 <template>
-  <page-container>
+  <page-container :show="showPage">
     <div
       v-if="angel.slug"
       class="body"
@@ -64,6 +64,7 @@ export default {
   props: {},
   data() {
     return {
+      showPage: false,
       showContentFooter: false,
       angel: {},
     };
@@ -88,6 +89,7 @@ export default {
       this.$router.push('/');
       return;
     }
+    this.showPage = true;
     this.angel = { ...angel };
     setTimeout(() => {
         this.showContentFooter = true;
