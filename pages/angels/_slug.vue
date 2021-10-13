@@ -54,9 +54,9 @@
   </page-container>
 </template>
 <script>
-import PageContainer from '~/components/PageContainer';
+import animationDelays from '~/lib/delays';
 
-const ANIMATION_DELAY = 600;
+import PageContainer from '~/components/PageContainer';
 
 export default {
   name: '',
@@ -96,31 +96,16 @@ export default {
     }
     this.angel = { ...angel };
     setTimeout(() => {
-      this.showContent = true;
-      setTimeout(() => {
         this.showContentFooter = true;
-      }, ANIMATION_DELAY * 5)
-    }, ANIMATION_DELAY);
+    }, animationDelays.slow * 6);
   },
   methods: {},
 };
 </script>
 <style lang="scss" scoped>
 .body {
-  width: 100%;
-  height: 100%;
-  font-size: 1.8rem;
-  color: white;
-  font-family: FANTASY;
-  letter-spacing: 0.1rem;
-  padding-bottom: 1rem;
   display: flex;
-  opacity: 0;
-  transition: 1000ms ease-out;
-
-  &.show {
-    opacity: 1;
-  }
+  height: 100%;
 
   .image-column {
     display: flex;

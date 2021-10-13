@@ -5,10 +5,19 @@
       show,
     }"
   >
-    <slot />
+    <div
+      class="page-content"
+      :class="{
+        show: showContent,
+      }"
+    >
+      <slot />
+    </div>
   </div>
 </template>
 <script>
+import animationDelays from '~/lib/delays';
+
 export default {
   name: 'PageContainer',
   components: {},
@@ -20,7 +29,18 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      showContent: false,
+    };
+  },
+  watch: {
+    show() {
+      if (this.show) {
+        setTimeout(() => {
+          this.showContent = true;
+        }, animationDelays.slow);
+      }
+    },
   },
   computed: {},
   methods: {},
@@ -44,6 +64,22 @@ export default {
     margin-top: 2rem;
     opacity: 0.9;
     box-shadow: -2px 0px 8px $light-golden, 2px 0px 8px $light-golden;
+  }
+
+  .page-content {
+    width: 100%;
+    height: 100%;
+    font-size: 1.8rem;
+    color: white;
+    font-family: FANTASY;
+    letter-spacing: 0.1rem;
+    padding-bottom: 1rem;
+    opacity: 0;
+    transition: 1000ms ease-out;
+
+    &.show {
+      opacity: 1;
+    }
   }
 }
 </style>

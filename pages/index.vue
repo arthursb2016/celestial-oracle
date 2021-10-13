@@ -31,9 +31,8 @@
   </div>
 </template>
 <script>
+import animationDelays from '~/lib/delays';
 import WelcomeGreetings from '~/components/WelcomeGreetings';
-
-const ANIMATION_DELAY = 200;
 
 export default {
   name: '',
@@ -74,12 +73,12 @@ export default {
     showGreetings() {
       setTimeout(() => {
         this.greetings = true;
-      }, ANIMATION_DELAY);
+      }, animationDelays.fast);
     },
     onGreetingsDone() {
       setTimeout(() => {
         this.button = true;
-      }, ANIMATION_DELAY);
+      }, animationDelays.fast);
     },
     onClick() {
       const angel = this.angels[Math.floor(Math.random() * this.angels.length)];
