@@ -1,8 +1,22 @@
 <template>
   <div class="home">
     <div class="header">
+      <div
+        class="stars"
+        :class="{
+          show: greetings,
+        }"
+      >
+        <lottie-player
+          src="/home-star.json"
+          background="transparent"
+          speed="1"
+          autoplay
+          renderer="canvas"
+        />
+      </div>
       <lottie-player
-        id="lottiePlayer"
+        id="lottieAngelPlayer"
         src="/home-angel.json"
         background="transparent"
         speed="1"
@@ -53,10 +67,10 @@ export default {
     },
   },
   mounted() {
-    const lottiePlayer = document.getElementById('lottiePlayer');
+    const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
     try {
-      lottiePlayer.addEventListener('complete', this.showGreetings);
       this.loadAngels();
+      lottieAngelPlayer.addEventListener('complete', this.showGreetings);
     } catch(err) {
       console.error(err);
     }
@@ -99,6 +113,20 @@ export default {
 
     .angel {
       max-width: 25rem;
+    }
+
+    .stars {
+      position: absolute;
+      left: 1.5rem;
+      top: -5rem;
+      width: 100%;
+      opacity: 0.5;
+      transition: 1800ms ease-in;
+
+      &.show {
+        opacity: 0.2;
+        top: -26rem;
+      }
     }
   }
 
