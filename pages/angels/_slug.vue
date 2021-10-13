@@ -27,9 +27,9 @@
         </div>
       </div>
       <div class="content-column">
-        <h1 class="angel-name">
+        <h2 class="angel-name">
           {{ angel.name }}
-        </h1>
+        </h2>
         <div class="angel-description mb-8">
           {{ angel.description }}
         </div>
