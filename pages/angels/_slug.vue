@@ -1,11 +1,8 @@
 <template>
-  <page-container :show="showPage">
+  <page-container>
     <div
       v-if="angel.slug"
       class="body"
-      :class="{
-        show: showContent,
-      }"
     >
       <div class="image-column">
         <v-img
@@ -67,8 +64,6 @@ export default {
   props: {},
   data() {
     return {
-      showPage: false,
-      showContent: false,
       showContentFooter: false,
       angel: {},
     };
@@ -87,7 +82,6 @@ export default {
       });
     this.$store.commit('angels/setAngels', data);
     /* end of remove later */
-    this.showPage = true;
     const angel = this.$store.getters['angels/getAngel'](this.slug);
     if (!angel) {
       console.error('Angel not found');

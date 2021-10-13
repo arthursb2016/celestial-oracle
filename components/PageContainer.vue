@@ -2,7 +2,7 @@
   <div
     class="page-container"
     :class="{
-      show,
+      show: showContainer,
     }"
   >
     <div
@@ -22,27 +22,21 @@ export default {
   name: 'PageContainer',
   components: {},
   mixins: [],
-  props: {
-    show: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
+  props: {},
   data() {
     return {
+      showContainer: false,
       showContent: false,
     };
   },
-  watch: {
-    show() {
-      if (this.show) {
-        setTimeout(() => {
-          this.showContent = true;
-        }, animationDelays.slow);
-      }
-    },
-  },
   computed: {},
+  watch: {},
+  mounted() {
+    this.showContainer = true;
+    setTimeout(() => {
+      this.showContent = true;
+    }, animationDelays.slow);
+  },
   methods: {},
 };
 </script>
