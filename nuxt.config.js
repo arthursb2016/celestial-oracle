@@ -3,15 +3,14 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - Meditating with Angels',
-    title: 'Meditating with Angels',
+    title: 'House of Angels',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Take a minute to meet insightful angels and make your day brighter' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [

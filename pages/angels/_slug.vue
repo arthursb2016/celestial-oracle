@@ -74,6 +74,21 @@ export default {
     const { slug } = params;
     return { slug };
   },
+  head() {
+    return {
+      title: this.angel.name,
+      htmlAttrs: {
+        lang: 'en'
+      },
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.angel.phrase,
+        },
+      ],
+    };
+  },
   async mounted() {
     /* remove this later */
     const data = await this.$content('angels')
