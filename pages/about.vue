@@ -17,6 +17,8 @@
   </page-container>
 </template>
 <script>
+import animationDelays from '~/lib/delays';
+
 import PageContainer from '~/components/PageContainer';
 
 export default {
@@ -33,7 +35,9 @@ export default {
   },
   computed: {},
   mounted() {
-    this.showPage = true;
+    setTimeout(() => {
+      this.showPage = true;
+    }, animationDelays.pageMounted);
   },
   methods: {},
 };
