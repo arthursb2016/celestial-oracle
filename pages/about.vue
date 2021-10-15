@@ -1,18 +1,28 @@
 <template>
   <page-container :show="showPage">
     <div class="body">
-      <h2>
-        The Angels
-      </h2>
       <div class="content">
-        Blah blah blah
+        <v-tabs
+          grow
+          background-color="transparent"
+        >
+          <v-tab>
+            About Angels
+          </v-tab>
+          <v-tab>
+            About the Website
+          </v-tab>
+          <v-tab-item>
+            Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
+          </v-tab-item>
+          <v-tab-item>
+            Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
+          </v-tab-item>
+        </v-tabs>
       </div>
-      <h2>
-        About the website
-      </h2>
-      <div class="content">
-        Di di di di
-      </div>
+      <page-footer
+        show
+      />
     </div>
   </page-container>
 </template>
@@ -43,5 +53,33 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
+  .content {
+    flex-grow: 1;
+  }
+}
+
+::v-deep .v-tabs{
+  font-size: 1.8rem;
+  text-align: justify;
+
+  .v-tabs-bar {
+    height: 3.8rem;
+  }
+  .v-tab {
+    font-size: 2.1rem;
+
+    &:not(.v-tab--active) {
+      color: $text-grey;
+    }
+  }
+  .v-tabs-items {
+    background-color: transparent;
+    margin-top: 2rem;
+  }
+}
 </style>
