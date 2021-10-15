@@ -83,7 +83,7 @@ export default {
     };
   },
   async mounted() {
-    /* remove this later */
+    /* remove this later (and the "async" from mounted) */
     const data = await this.$content('angels')
       .fetch()
       .catch((err) => {
