@@ -3,6 +3,7 @@
     <div class="body">
       <div class="content">
         <v-tabs
+          v-model="selectedTab"
           grow
           background-color="transparent"
         >
@@ -18,7 +19,16 @@
             />
           </v-tab-item>
           <v-tab-item>
-            Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
+            <div class="about-website-container">
+              <v-img
+                :src="require('~/assets/the-book.jpg')"
+                alt="Image of a book"
+                class="the-book-image"
+              />
+              <nuxt-content
+                :document="aboutWebsite"
+              />
+            </div>
           </v-tab-item>
         </v-tabs>
       </div>
@@ -26,17 +36,23 @@
         :show="showFooter"
       >
         <a
-          href="https://www.youtube.com/watch?v=C_e-XtC1dDI"
+          :href="footerLink"
           target="_blank"
           class="link"
         >
           <v-icon
+            v-if="selectedTab === 0"
             color="primary"
             class="mr-1 mb-2"
           >
             ondemand_video
           </v-icon>
-          Bring the Angels to your life
+          <v-img
+            v-else
+            :src="require('~/assets/icons/github.svg?inline')"
+            class="github-icon"
+          />
+          {{ footerText }}
         </a>
       </page-footer>
     </div>
@@ -56,18 +72,37 @@ export default {
   props: {},
   data() {
     return {
+      selectedTab: 0,
       showPage: false,
       showFooter: false,
     };
   },
-  computed: {},
+  computed: {
+    footerLink() {
+      if (this.selectedTab === 0) {
+        return 'https://www.youtube.com/watch?v=C_e-XtC1dDI';
+      }
+      return 'https://github.com/arthursb2016/house-of-angels';
+    },
+    footerText() {
+      if (this.selectedTab === 0) {
+        return 'Bring the Angels to your life';
+      }
+      return 'Checkout the project repository';
+    },
+  },
   async asyncData({ $content }) {
     const aboutAngels = await $content('about/angels')
       .fetch()
       .catch((err) => {
         console.error(err);
       });
-    return { aboutAngels };
+    const aboutWebsite = await $content('about/website')
+      .fetch()
+      .catch((err) => {
+        console.error(err);
+      });
+    return { aboutAngels, aboutWebsite };
   },
   async mounted() {
     setTimeout(() => {
@@ -88,6 +123,17 @@ export default {
 
   .content {
     flex-grow: 1;
+
+    .about-website-container {
+      display: flex;
+
+      .the-book-image {
+        max-width: 20rem;
+        opacity: 0.9;
+        margin-right: 2rem;
+        border-radius: 1rem;
+      }
+    }
   }
 }
 
@@ -113,6 +159,11 @@ export default {
 
 ::v-deep .v-icon {
   font-size: 2.2rem;
+}
+
+.github-icon {
+  width: 1.8rem;
+  display: inline-block;
 }
 
 .link {
