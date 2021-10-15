@@ -13,7 +13,7 @@
             About the Website
           </v-tab>
           <v-tab-item>
-            Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
+            <nuxt-content :document="aboutAngels" />
           </v-tab-item>
           <v-tab-item>
             Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
@@ -44,7 +44,15 @@ export default {
     };
   },
   computed: {},
-  mounted() {
+  async asyncData({ $content }) {
+    const aboutAngels = await $content('about/angels')
+      .fetch()
+      .catch((err) => {
+        console.error(err);
+      });
+    return { aboutAngels };
+  },
+  async mounted() {
     setTimeout(() => {
       this.showPage = true;
     }, animationDelays.pageMounted);

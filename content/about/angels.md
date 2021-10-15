@@ -1,0 +1,3 @@
+Angels are creatures that live in the presence of God. When they are present in our consciousness, they inspire us to get in touch with the essence of everything that exists and don't let us forget about our spiritual origin. The angelic presence helps us see our life purpose clearly.
+
+As they reside in upper dimensions, unrelated to matter, the Angels approach us as stability strength and lights of tranquility, radiating peace and safety, energizing us with renewed power of eternal love.
