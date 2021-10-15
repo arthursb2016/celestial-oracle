@@ -33,7 +33,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .page-footer {
-  flex-grow: 1;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
