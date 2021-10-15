@@ -33,19 +33,10 @@
         <div class="primary--text angel-phrase">
           "{{ angel.phrase }}"
         </div>
-        <div
+        <page-footer
+          :show="showContentFooter"
           class="content-footer"
-          :class="{
-            show: showContentFooter,
-          }"
-        >
-          <v-icon
-            class="back-icon"
-            @click="$router.push('/')"
-          >
-            keyboard_return
-          </v-icon>
-        </div>
+        />
       </div>
     </div>
   </page-container>
@@ -54,11 +45,13 @@
 import animationDelays from '~/lib/delays';
 
 import PageContainer from '~/components/PageContainer';
+import PageFooter from '~/components/PageFooter';
 
 export default {
   name: '',
   components: {
     PageContainer,
+    PageFooter,
   },
   mixins: [],
   props: {},
@@ -151,20 +144,6 @@ export default {
 
     .content-footer {
       flex-grow: 1;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      opacity: 0;
-      transition: 1500ms ease out;
-
-      &.show {
-        opacity: 1;
-      }
-
-      ::v-deep .v-icon {
-        font-size: 2.6rem;
-        opacity: 0.8;
-      }
     }
   }
 }
