@@ -4,7 +4,7 @@
       <div
         class="stars"
         :class="{
-          show: greetings,
+          fade: pageStep >= 1,
         }"
       >
         <lottie-player
@@ -23,9 +23,20 @@
         autoplay
         class="angel"
       />
+      <nuxt-link
+        to="/about"
+        class="about-link"
+        :class="{
+          show: pageStep >= 2,
+        }"
+      >
+        <v-icon color="white">
+          help_outline
+        </v-icon>
+      </nuxt-link>
     </div>
     <welcome-greetings
-      :show="greetings"
+      :show="pageStep >= 1"
       @done="onGreetingsDone"
     />
     <div class="footer">
@@ -36,7 +47,7 @@
         rounded
         nuxt
         :class="{
-          show: button,
+          show: pageStep >= 2,
         }"
         @click="onClick"
       >
@@ -58,6 +69,7 @@ export default {
   props: {},
   data() {
     return {
+      pageStep: 0,
       greetings: false,
       button: false,
     };
@@ -71,7 +83,9 @@ export default {
     const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
     try {
       this.loadAngels();
-      lottieAngelPlayer.addEventListener('complete', this.showGreetings);
+      lottieAngelPlayer.addEventListener('complete', () => {
+        this.loadPageNextStep();
+      });
     } catch(err) {
       console.error(err);
     }
@@ -85,15 +99,13 @@ export default {
         });
       this.$store.commit('angels/setAngels', data);
     },
-    showGreetings() {
+    loadPageNextStep(delaySpeed) {
       setTimeout(() => {
-        this.greetings = true;
-      }, animationDelays.fast);
+        this.pageStep++;
+      }, animationDelays[delaySpeed] || animationDelays.fast);
     },
     onGreetingsDone() {
-      setTimeout(() => {
-        this.button = true;
-      }, animationDelays.fast);
+      this.loadPageNextStep();
     },
     onClick() {
       const angel = this.angels[Math.floor(Math.random() * this.angels.length)];
@@ -124,9 +136,28 @@ export default {
       opacity: 0.5;
       transition: 1800ms ease-in;
 
-      &.show {
+      &.fade {
         opacity: 0.2;
         top: -26rem;
+      }
+    }
+
+    .about-link {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      overflow: hidden;
+
+      ::v-deep .v-icon {
+        font-size: 4.3rem;
+        opacity: 0;
+        transition: 1000ms ease-out;
+      }
+
+      &.show {
+        ::v-deep .v-icon {
+          opacity: 0.8;
+        }
       }
     }
   }
