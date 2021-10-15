@@ -104,11 +104,13 @@ export default {
       this.$router.push('/');
       return;
     }
-    this.showPage = true;
-    this.angel = { ...angel };
     setTimeout(() => {
-        this.showContentFooter = true;
-    }, animationDelays.slow * 6);
+      this.showPage = true;
+      this.angel = { ...angel };
+      setTimeout(() => {
+          this.showContentFooter = true;
+      }, animationDelays.slow * 6);
+    }, animationDelays.pageMounted);
   },
   methods: {},
 };
