@@ -5,6 +5,7 @@
       show,
     }"
   >
+    <slot />
     <v-icon
       class="back-icon"
       @click="$router.push('/')"
@@ -33,19 +34,23 @@ export default {
 </script>
 <style lang="scss" scoped>
 .page-footer {
+  position: relative;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
   opacity: 0;
+  min-height: 4rem;
   transition: 1500ms ease out;
 
   &.show {
     opacity: 1;
   }
 
-  ::v-deep .v-icon {
+  ::v-deep .v-icon.back-icon {
     font-size: 2.6rem;
     opacity: 0.8;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 </style>

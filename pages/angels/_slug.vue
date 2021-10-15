@@ -24,18 +24,19 @@
         </div>
       </div>
       <div class="content-column">
-        <h2 class="angel-name">
-          {{ angel.name }}
-        </h2>
-        <div class="angel-description mb-8">
-          {{ angel.description }}
-        </div>
-        <div class="primary--text angel-phrase">
-          "{{ angel.phrase }}"
+        <div class="content">
+          <h2 class="angel-name">
+            {{ angel.name }}
+          </h2>
+          <div class="angel-description mb-8">
+            {{ angel.description }}
+          </div>
+          <div class="primary--text angel-phrase">
+            "{{ angel.phrase }}"
+          </div>
         </div>
         <page-footer
           :show="showContentFooter"
-          class="content-footer"
         />
       </div>
     </div>
@@ -126,24 +127,26 @@ export default {
   }
 
   .content-column {
-    flex-grow: 1;
+    height: 100%;
     display: flex;
     flex-direction: column;
     padding-left: 2.5rem;
     text-align: center;
 
-    .angel-name {
-      border-bottom: 2px solid white;
-      margin-bottom: 1rem;
-    }
-
-    .angel-description, .angel-phrase {
-      text-align: justify;
-      font-size: 1.8rem;
-    }
-
-    .content-footer {
+    .content {
       flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      .angel-name {
+        border-bottom: 2px solid white;
+        margin-bottom: 1rem;
+      }
+
+      .angel-description, .angel-phrase {
+        text-align: justify;
+        font-size: 1.8rem;
+      }
     }
   }
 }
