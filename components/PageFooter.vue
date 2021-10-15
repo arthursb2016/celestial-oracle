@@ -37,12 +37,14 @@ export default {
   position: relative;
   display: flex;
   align-items: flex-end;
-  opacity: 0;
+  opacity: 0.8;
+  bottom: -20rem;
   min-height: 4rem;
-  transition: 1500ms ease out;
+  transition: 1500ms ease-out;
 
   &.show {
     opacity: 1;
+    bottom: 0rem;
   }
 
   ::v-deep .v-icon.back-icon {

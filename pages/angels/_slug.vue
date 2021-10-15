@@ -36,7 +36,7 @@
           </div>
         </div>
         <page-footer
-          :show="showContentFooter"
+          :show="showFooter"
         />
       </div>
     </div>
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       showPage: false,
-      showContentFooter: false,
+      showFooter: false,
       angel: {},
     };
   },
@@ -102,8 +102,8 @@ export default {
       this.showPage = true;
       this.angel = { ...angel };
       setTimeout(() => {
-          this.showContentFooter = true;
-      }, animationDelays.slow * 6);
+          this.showFooter = true;
+      }, animationDelays.footer);
     }, animationDelays.pageMounted);
   },
   methods: {},

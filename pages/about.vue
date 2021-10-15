@@ -23,7 +23,7 @@
         </v-tabs>
       </div>
       <page-footer
-        show
+        :show="showFooter"
       >
         <a
           href="https://www.youtube.com/watch?v=C_e-XtC1dDI"
@@ -57,6 +57,7 @@ export default {
   data() {
     return {
       showPage: false,
+      showFooter: false,
     };
   },
   computed: {},
@@ -71,6 +72,9 @@ export default {
   async mounted() {
     setTimeout(() => {
       this.showPage = true;
+      setTimeout(() => {
+        this.showFooter = true;
+      }, animationDelays.footer);
     }, animationDelays.pageMounted);
   },
   methods: {},
