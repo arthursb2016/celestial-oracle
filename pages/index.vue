@@ -34,6 +34,7 @@
         elevation="4"
         raised
         rounded
+        nuxt
         :class="{
           show: button,
         }"
