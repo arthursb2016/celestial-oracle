@@ -3,10 +3,10 @@
   </div>
 </template>
 <script>
+import animationDelays from '~/lib/delays';
 import { typewriter } from '../lib/typewritter';
 import { greetings } from '../lib/speeches';
 
-const TRANSITION_DURATION_MS = 600;
 const TYPEWRITER_SPEED_MS = 80;
 
 export default {
@@ -27,11 +27,11 @@ export default {
     show() {
       if (!this.show) return;
       const bubble = document.getElementById('bubble');
-      bubble.style.transition = `${TRANSITION_DURATION_MS}ms ease-out`;
+      bubble.style.transition = `${animationDelays.slow}ms ease-out`;
       bubble.className = 'show';
       setTimeout(() => {
         typewriter(bubble, greetings[0](), TYPEWRITER_SPEED_MS, () => this.$emit('done'));
-      }, TRANSITION_DURATION_MS / 2);
+      }, animationDelays.slow / 2);
     },
   },
   mounted() {},
