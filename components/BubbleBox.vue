@@ -30,7 +30,8 @@ export default {
       bubble.style.transition = `${animationDelays.slow}ms ease-out`;
       bubble.className = 'show';
       setTimeout(() => {
-        typewriter(bubble, greetings[0](), TYPEWRITER_SPEED_MS, () => this.$emit('done'));
+        const index = Math.floor(Math.random() * greetings.length);
+        typewriter(bubble, greetings[index](), TYPEWRITER_SPEED_MS, () => this.$emit('done'));
       }, animationDelays.slow / 2);
     },
   },

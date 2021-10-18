@@ -108,7 +108,8 @@ export default {
       this.loadPageNextStep();
     },
     onClick() {
-      const angel = this.angels[Math.floor(Math.random() * this.angels.length)];
+      const index = Math.floor(Math.random() * this.angels.length);
+      const angel = this.angels[index];
       this.$router.push(`/angels/${angel.slug}`);
     },
   },
