@@ -86,7 +86,7 @@ export default {
     },
     footerText() {
       if (this.selectedTab === 0) {
-        return 'Bring the Angels to your life';
+        return 'Bring Angels to your life';
       }
       return 'Checkout the project repository';
     },
