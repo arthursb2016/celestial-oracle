@@ -208,8 +208,8 @@ export default {
     }
     .footer {
       ::v-deep .v-btn {
-        font-size: 2.8rem;
-        padding: 3rem 2rem;
+        font-size: 2.5rem;
+        padding: 2.5rem 2rem;
       }
     }
   }

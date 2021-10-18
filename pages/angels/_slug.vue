@@ -83,7 +83,7 @@ export default {
       ],
     };
   },
-  async mounted() {
+  mounted() {
     const angel = this.$store.getters['angels/getAngel'](this.slug);
     if (!angel) {
       console.error('Angel not found');
@@ -151,5 +151,31 @@ export default {
 .link {
   color: $text-grey;
   text-decoration: none;
+}
+
+@media (orientation: portrait) {
+  .body {
+    flex-direction: column;
+
+    .image-column {
+      align-items: center;
+      .angel-image {
+        max-width: 14rem;
+      }
+    }
+
+    .content-column {
+      padding-left: 0rem;
+      padding-top: 1rem;
+      max-height: 60%;
+
+      .content {
+        .angel-description, .angel-phrase {
+          text-align: justify;
+          font-size: 2.1rem;
+        }
+      }
+    }
+  }
 }
 </style>
