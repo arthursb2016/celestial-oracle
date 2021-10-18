@@ -40,7 +40,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 #bubble {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 600;
   position: relative;
   background: $light-golden;

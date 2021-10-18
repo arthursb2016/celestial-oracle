@@ -125,7 +125,7 @@ export default {
     justify-content: center;;
 
     .angel {
-      max-width: 25rem;
+      width: 22rem;
     }
 
     .stars {
@@ -172,7 +172,7 @@ export default {
       width: 0%;
       opacity: 0;
       padding: 2rem;
-      font-size: 2.25rem;
+      font-size: 2rem;
       border-radius: 2rem;
       transition: 1000ms ease-out;
 
