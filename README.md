@@ -1,6 +1,6 @@
 # House of Angels
 
-How about taking 1 minute to meet an Angel today?
+How about taking 1 minute to meet an Angel?
 
 Check out: https://houseofangels.netlify.app/
 
