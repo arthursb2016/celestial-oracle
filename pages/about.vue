@@ -88,7 +88,7 @@ export default {
       if (this.selectedTab === 0) {
         return 'Bring Angels to your life';
       }
-      return 'Checkout the project repository';
+      return 'Checkout the repository';
     },
   },
   async asyncData({ $content }) {
@@ -137,7 +137,7 @@ export default {
   }
 }
 
-::v-deep .v-tabs{
+::v-deep .v-tabs {
   font-size: 1.8rem;
   text-align: justify;
 
@@ -168,5 +168,30 @@ export default {
 
 .link {
   text-decoration: none;
+}
+
+@media (orientation: portrait) {
+  .body {
+    .content {
+      .about-website-container {
+        flex-direction: column;
+        align-items: center;
+
+        .the-book-image {
+          max-width: 17rem;
+          margin: 1rem 0rem;
+        }
+      }
+    }
+  }
+
+  ::v-deep .v-tabs {
+    .v-tab {
+      font-size: 1.8rem;
+    }
+    .v-slide-group__prev.v-slide-group__prev--disabled {
+      display: none !important;
+    }
+  }
 }
 </style>
