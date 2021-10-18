@@ -84,14 +84,6 @@ export default {
     };
   },
   async mounted() {
-    /* remove this later (and the "async" from mounted) */
-    const data = await this.$content('angels')
-      .fetch()
-      .catch((err) => {
-        console.error(err);
-      });
-    this.$store.commit('angels/setAngels', data);
-    /* end of remove later */
     const angel = this.$store.getters['angels/getAngel'](this.slug);
     if (!angel) {
       console.error('Angel not found');
