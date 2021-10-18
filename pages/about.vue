@@ -88,7 +88,7 @@ export default {
       if (this.selectedTab === 0) {
         return 'Bring Angels to your life';
       }
-      return 'Checkout the repository';
+      return 'Check out the repository';
     },
   },
   async asyncData({ $content }) {
