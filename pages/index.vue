@@ -35,9 +35,9 @@
         </v-icon>
       </nuxt-link>
     </div>
-    <welcome-greetings
+    <bubble-box
       :show="pageStep >= 1"
-      @done="onGreetingsDone"
+      @done="onSpeechDone"
     />
     <div class="footer">
       <v-btn
@@ -58,12 +58,12 @@
 </template>
 <script>
 import animationDelays from '~/lib/delays';
-import WelcomeGreetings from '~/components/WelcomeGreetings';
+import BubbleBox from '~/components/BubbleBox';
 
 export default {
   name: '',
   components: {
-    WelcomeGreetings,
+    BubbleBox,
   },
   mixins: [],
   props: {},
@@ -104,7 +104,7 @@ export default {
         this.pageStep++;
       }, animationDelays[delaySpeed] || animationDelays.fast);
     },
-    onGreetingsDone() {
+    onSpeechDone() {
       this.loadPageNextStep();
     },
     onClick() {

@@ -10,7 +10,7 @@ import { greetings } from '../lib/speeches';
 const TYPEWRITER_SPEED_MS = 80;
 
 export default {
-  name: 'WelcomeGreetings',
+  name: 'BubbleBox',
   components: {},
   mixins: [],
   props: {
