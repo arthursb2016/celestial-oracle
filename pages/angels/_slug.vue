@@ -137,6 +137,7 @@ export default {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+      max-height: 90%;
 
       .angel-name {
         border-bottom: 2px solid white;
@@ -146,6 +147,10 @@ export default {
       .angel-description, .angel-phrase {
         text-align: justify;
         font-size: 1.8rem;
+      }
+
+      .angel-description {
+        overflow-y: auto;
       }
     }
   }
