@@ -184,4 +184,18 @@ export default {
     }
   }
 }
+
+@media (orientation: portrait) {
+  .home {
+    .header {
+      .stars {
+        top: 0rem;
+
+        &.fade {
+          top: -5rem;
+        }
+      }
+    }
+  }
+}
 </style>
