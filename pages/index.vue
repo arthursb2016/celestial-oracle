@@ -188,12 +188,28 @@ export default {
 @media (orientation: portrait) {
   .home {
     .header {
+      .angel {
+        width: 28rem;
+      }
+
       .stars {
         top: 0rem;
 
         &.fade {
           top: -5rem;
         }
+      }
+
+      .about-link {
+        ::v-deep .v-icon {
+          font-size: 4.8rem;
+        }
+      }
+    }
+    .footer {
+      ::v-deep .v-btn {
+        font-size: 2.8rem;
+        padding: 3rem 2rem;
       }
     }
   }

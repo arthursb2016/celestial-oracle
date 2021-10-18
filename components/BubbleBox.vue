@@ -75,4 +75,11 @@ export default {
   margin-left: -38px;
   margin-top: -38px;
 }
+
+@media (orientation: portrait) {
+  #bubble {
+    font-size: 3.1rem;
+    margin-top: -2.9rem;
+  }
+}
 </style>
