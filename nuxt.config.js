@@ -13,7 +13,7 @@ export default {
       { hid: 'description', name: 'description', content: 'Take a minute to meet insightful angels and make your day brighter' },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#ffffff' },
-      { name: 'msapplication-TileImage' content: '/favicon/ms-icon-144x144.png' },
+      { name: 'msapplication-TileImage', content: '/favicon/ms-icon-144x144.png' },
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
@@ -23,7 +23,7 @@ export default {
       { rel: 'apple-touch-icon', sizes: '76x76', href: '/favicon/apple-icon-76x76.png' },
       { rel: 'apple-touch-icon', sizes: '114x114', href: '/favicon/apple-icon-114x114.png' },
       { rel: 'apple-touch-icon', sizes: '120x120', href: '/favicon/apple-icon-120x120.png' },
-      { rel: 'apple-touch-icon', sizes: '144x144', href: '/favicon/apple-icon-144x144.png' }
+      { rel: 'apple-touch-icon', sizes: '144x144', href: '/favicon/apple-icon-144x144.png' },
       { rel: 'apple-touch-icon', sizes: '152x152', href: '/favicon/apple-icon-152x152.png' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-icon-180x180.png' },
       { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/favicon/android-icon-192x192.png' },
