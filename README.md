@@ -10,6 +10,6 @@ Website built with NuxtJs
 
 > TO-DO list:
 >
-> * Mobile version
-> * Multilanguage
-> * Add more content...
+> * Multi languages (i18n)
+> * Add more content
+> * Apply typescript
