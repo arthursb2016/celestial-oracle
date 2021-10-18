@@ -22,9 +22,10 @@ export default {
 };
 </script>
 <style lang="scss">
+@import '~/assets/queries.scss';
+
 html, body {
   overflow: hidden;
-  font-size: 32px;;
 }
 
 .app-container {

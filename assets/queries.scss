@@ -1,0 +1,57 @@
+$baseFontSize: 32;
+
+$baseWidth: 2560;
+$baseHeight: 1440;
+
+$widthProportion: 16;
+$heightProportion: 9;
+
+html {
+  font-size: $baseFontSize + px;
+}
+
+$count: 1;
+
+$width: $baseWidth;
+$height: $baseHeight;
+
+@while $count < $baseFontSize {
+  $fontSize: $baseFontSize - $count;
+
+  $width: $width - ($widthProportion * 6);
+  $height: $height - ($heightProportion * 6);
+
+  @if ($width > 0 and $height > 0) {
+    $maxWidth: $width + px;
+    $maxHeight: $height + px;
+    @media (orientation: landscape) and (max-width: $maxWidth), (orientation: landscape) and (max-height: $maxHeight) {
+      html {
+        font-size: $fontSize + px;
+      }
+    }
+  }
+  $count: $count + 1;
+}
+
+$count: 1;
+
+$width: $baseHeight;
+$height: $baseWidth;
+
+@while $count < $baseFontSize {
+  $fontSize: $baseFontSize - $count;
+
+  $width: $width - ($heightProportion * 6);
+  $height: $height - ($widthProportion * 6);
+
+  @if ($width > 0 and $height > 0) {
+    $maxWidth: $width + px;
+    $maxHeight: $height + px;
+    @media (orientation: portrait) and (max-width: $maxWidth), (orientation: portrait) and (max-height: $maxHeight) {
+      html {
+        font-size: $fontSize + px;
+      }
+    }
+  }
+  $count: $count + 1;
+}
