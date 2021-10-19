@@ -5,7 +5,7 @@
 <script>
 import animationDelays from '~/lib/delays';
 import { typewriter } from '../lib/typewritter';
-import { greetings } from '../lib/speeches';
+import { greetings, speeches } from '../lib/speeches';
 
 const TYPEWRITER_SPEED_MS = 80;
 
@@ -15,6 +15,10 @@ export default {
   mixins: [],
   props: {
     show: {
+      type: Boolean,
+      default: () => false,
+    },
+    speech: {
       type: Boolean,
       default: () => false,
     },
@@ -30,8 +34,9 @@ export default {
       bubble.style.transition = `${animationDelays.slow}ms ease-out`;
       bubble.className = 'show';
       setTimeout(() => {
-        const index = Math.floor(Math.random() * greetings.length);
-        typewriter(bubble, greetings[index](), TYPEWRITER_SPEED_MS, () => this.$emit('done'));
+        const lines = this.speech ? speeches : greetings;
+        const index = Math.floor(Math.random() * lines.length);
+        typewriter(bubble, lines[index](), TYPEWRITER_SPEED_MS, () => this.$emit('done'));
       }, animationDelays.slow / 2);
     },
   },

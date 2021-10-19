@@ -37,6 +37,7 @@
     </div>
     <bubble-box
       :show="pageStep >= 1"
+      :speech="hasVisitedAngelsPage"
       @done="onSpeechDone"
     />
     <div class="footer">
@@ -51,7 +52,7 @@
         }"
         @click="onClick"
       >
-        Meet an Angel
+        {{ buttonText }}
       </v-btn>
     </div>
   </div>
@@ -72,12 +73,24 @@ export default {
       pageStep: 0,
       greetings: false,
       button: false,
+      hasVisitedAngelsPage: false,
     };
   },
   computed: {
     angels() {
       return this.$store.getters['angels/angels'];
     },
+    buttonText() {
+      if (this.hasVisitedAngelsPage) {
+        return 'Meet another Angel';
+      }
+      return 'Meet an Angel';
+    },
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.hasVisitedAngelsPage = from.name === 'angels-slug';
+    });
   },
   mounted() {
     const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
