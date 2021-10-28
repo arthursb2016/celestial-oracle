@@ -37,7 +37,7 @@
     </div>
     <bubble-box
       :show="pageStep >= 1"
-      :speech="hasVisitedAngelsPage"
+      :is-speech="hasVisitedAngelsPage"
       @done="onSpeechDone"
     />
     <div class="footer">
@@ -57,75 +57,71 @@
     </div>
   </div>
 </template>
-<script>
-import animationDelays from '~/lib/delays';
-import BubbleBox from '~/components/BubbleBox';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: '',
+import { Angel } from '~/types/angel';
+import BubbleBox from '~/components/BubbleBox.vue';
+
+const animationDelays = require('~/lib/delays');
+
+@Component({
   components: {
     BubbleBox,
   },
-  mixins: [],
-  props: {},
-  data() {
-    return {
-      pageStep: 0,
-      greetings: false,
-      button: false,
-      hasVisitedAngelsPage: false,
-    };
-  },
-  computed: {
-    angels() {
-      return this.$store.getters['angels/angels'];
-    },
-    buttonText() {
-      if (this.hasVisitedAngelsPage) {
-        return 'Meet another Angel';
-      }
-      return 'Meet an Angel';
-    },
-  },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.hasVisitedAngelsPage = from.name === 'angels-slug';
+})
+export default class Index extends Vue {
+  private pageStep: number = 0;
+  private greetings: boolean = false;
+  private button: boolean = false;
+  private hasVisitedAngelsPage: boolean = false;
+
+  get angels(): Angel[] {
+    return this.$store.getters['angels/angels'];
+  }
+  get buttonText(): string {
+    if (this.hasVisitedAngelsPage) {
+      return 'Meet another Angel';
+    }
+    return 'Meet an Angel';
+  }
+
+  beforeRouteEnter(to: unknown, from: any, next: any) {
+    next((vm: any) => {
+      vm.hasVisitedAngelsPage = from && from.name === 'angels-slug';
     });
-  },
+  }
   mounted() {
     const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
-    try {
-      this.loadAngels();
-      lottieAngelPlayer.addEventListener('complete', () => {
-        this.loadPageNextStep();
-      });
-    } catch(err) {
-      console.error(err);
-    }
-  },
-  methods: {
-    async loadAngels() {
-      const data = await this.$content('angels')
-        .fetch()
-        .catch((err) => {
-          console.error(err);
-        });
-      this.$store.commit('angels/setAngels', data);
-    },
-    loadPageNextStep(delaySpeed) {
-      setTimeout(() => {
-        this.pageStep++;
-      }, animationDelays[delaySpeed] || animationDelays.fast);
-    },
-    onSpeechDone() {
+    if (!lottieAngelPlayer) return;
+    this.loadAngels();
+    lottieAngelPlayer.addEventListener('complete', () => {
       this.loadPageNextStep();
-    },
-    onClick() {
-      const index = Math.floor(Math.random() * this.angels.length);
-      const angel = this.angels[index];
-      this.$router.push(`/angels/${angel.slug}`);
-    },
-  },
+    });
+  }
+
+  public async loadAngels() {
+    const { $content } = require('@nuxt/content')
+    const data = await $content('angels')
+      .fetch()
+      .catch((err: unknown) => {
+        console.error(err);
+      });
+    this.$store.commit('angels/setAngels', data);
+  }
+  public loadPageNextStep(delaySpeed: string = '') {
+    setTimeout(() => {
+      this.pageStep++;
+    }, animationDelays[delaySpeed] || animationDelays.fast);
+  }
+  public onSpeechDone() {
+    this.loadPageNextStep();
+  }
+  public onClick() {
+    const index = Math.floor(Math.random() * this.angels.length);
+    const angel = this.angels[index];
+    this.$router.push(`/angels/${angel.slug}`);
+  }
 };
 </script>
 <style lang="scss" scoped>

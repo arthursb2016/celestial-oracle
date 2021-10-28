@@ -2,46 +2,42 @@
   <div id="bubble">
   </div>
 </template>
-<script>
-import animationDelays from '~/lib/delays';
+<script lang="ts">
+import {
+  Component,
+  Vue,
+  Prop,
+  Watch,
+} from 'vue-property-decorator';
+
 import { typewriter } from '../lib/typewritter';
 import { greetings, speeches } from '../lib/speeches';
 
 const TYPEWRITER_SPEED_MS = 80;
 
-export default {
-  name: 'BubbleBox',
-  components: {},
-  mixins: [],
-  props: {
-    show: {
-      type: Boolean,
-      default: () => false,
-    },
-    speech: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
-  data() {
-    return {};
-  },
-  computed: {},
-  watch: {
-    show() {
-      if (!this.show) return;
-      const bubble = document.getElementById('bubble');
-      bubble.style.transition = `${animationDelays.slow}ms ease-out`;
-      bubble.className = 'show';
-      setTimeout(() => {
-        const lines = this.speech ? speeches : greetings;
-        const index = Math.floor(Math.random() * lines.length);
-        typewriter(bubble, lines[index](), TYPEWRITER_SPEED_MS, () => this.$emit('done'));
-      }, animationDelays.slow / 2);
-    },
-  },
-  mounted() {},
-  methods: {},
+const animationDelays = require('~/lib/delays');
+
+@Component({})
+export default class BubbleBox extends Vue {
+  @Prop({ default: false })
+  show!: boolean
+
+  @Prop({ default: false })
+  isSpeech!: boolean
+
+  @Watch('show')
+  showHasChanged() {
+    if (!this.show) return;
+    const bubble = document.getElementById('bubble');
+    if (!bubble) return;
+    bubble.style.transition = `${animationDelays.slow}ms ease-out`;
+    bubble.className = 'show';
+    setTimeout(() => {
+      const lines = this.isSpeech ? speeches : greetings;
+      const index = Math.floor(Math.random() * lines.length);
+      typewriter(bubble, lines[index](), TYPEWRITER_SPEED_MS, () => this.$emit('done'));
+    }, animationDelays.slow / 2);
+  }
 };
 </script>
 <style lang="scss" scoped>
