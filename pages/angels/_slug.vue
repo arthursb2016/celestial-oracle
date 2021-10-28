@@ -43,8 +43,8 @@
   </page-container>
 </template>
 <script>
+import { angelsStore } from '~/store';
 import animationDelays from '~/lib/delays';
-
 import PageContainer from '~/components/PageContainer';
 import PageFooter from '~/components/PageFooter';
 
@@ -84,7 +84,7 @@ export default {
     };
   },
   mounted() {
-    const angel = this.$store.getters['angels/getAngel'](this.slug);
+    const angel = angelsStore.getAngel(this.slug);
     if (!angel) {
       console.error('Angel not found');
       this.$router.push('/');
