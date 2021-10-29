@@ -10,12 +10,11 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
-import { typewriter } from '../lib/typewritter';
+import { typewriter } from '../lib/functions/typewritter';
 import { greetings, speeches } from '../lib/speeches';
+import { animationDelays } from '../lib/delays';
 
 const TYPEWRITER_SPEED_MS = 80;
-
-const animationDelays = require('~/lib/delays');
 
 @Component({})
 export default class BubbleBox extends Vue {

@@ -61,9 +61,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 import { Angel } from '~/types/angel';
+import { animationDelays } from '~/lib/delays';
 import BubbleBox from '~/components/BubbleBox.vue';
-
-const animationDelays = require('~/lib/delays');
 
 @Component({
   components: {
