@@ -42,32 +42,32 @@
     </div>
   </page-container>
 </template>
-<script>
-import { angelsStore } from '~/store';
-import animationDelays from '~/lib/delays';
-import PageContainer from '~/components/PageContainer';
-import PageFooter from '~/components/PageFooter';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: '',
+import { angelsStore } from '~/store';
+import { animationDelays } from '~/lib/delays';
+import { Angel } from '~/models/angel';
+
+import PageContainer from '~/components/PageContainer.vue';
+import PageFooter from '~/components/PageFooter.vue';
+
+@Component({
   components: {
     PageContainer,
     PageFooter,
   },
-  mixins: [],
-  props: {},
-  data() {
-    return {
-      showPage: false,
-      showFooter: false,
-      angel: {},
-    };
-  },
-  computed: {},
   async asyncData({ params }) {
     const { slug } = params;
     return { slug };
   },
+})
+export default class SlugPage extends Vue {
+  private showPage: boolean = false;
+  private showFooter: boolean = false;
+  private slug: string = '';
+  private angel: Angel = new Angel();
+
   head() {
     return {
       title: this.angel.name,
@@ -82,7 +82,7 @@ export default {
         },
       ],
     };
-  },
+  }
   mounted() {
     const angel = angelsStore.getAngel(this.slug);
     if (!angel) {
@@ -92,13 +92,12 @@ export default {
     }
     setTimeout(() => {
       this.showPage = true;
-      this.angel = { ...angel };
+      this.angel = new Angel(angel);
       setTimeout(() => {
           this.showFooter = true;
       }, animationDelays.footer);
     }, animationDelays.pageMounted);
-  },
-  methods: {},
+  }
 };
 </script>
 <style lang="scss" scoped>
