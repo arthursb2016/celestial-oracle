@@ -14,22 +14,13 @@
     </v-icon>
   </div>
 </template>
-<script>
-export default {
-  name: '',
-  components: {},
-  mixins: [],
-  props: {
-    show: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {},
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
+
+@Component({})
+export default class PageFooter extends Vue {
+  @Prop({ default: false })
+  show!: boolean;
 };
 </script>
 <style lang="scss" scoped>
