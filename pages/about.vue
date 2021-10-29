@@ -82,7 +82,7 @@ import PageContainer from '~/components/PageContainer.vue';
     return { aboutAngels, aboutWebsite };
   },
 })
-export default class About extends Vue {
+export default class AboutPage extends Vue {
   private selectedTab: number = 0;
   private showPage: boolean = false;
   private showFooter: boolean = false;

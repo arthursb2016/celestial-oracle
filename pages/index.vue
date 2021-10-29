@@ -77,7 +77,7 @@ import BubbleBox from '~/components/BubbleBox.vue';
     return { data };
   },
 })
-export default class Index extends Vue {
+export default class IndexPage extends Vue {
   private data: Angel[] = [];
   private pageStep: number = 0;
   private greetings: boolean = false;
