@@ -58,60 +58,56 @@
     </div>
   </page-container>
 </template>
-<script>
-import animationDelays from '~/lib/delays';
-import PageContainer from '~/components/PageContainer';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: '',
+import { animationDelays } from '~/lib/delays';
+import PageContainer from '~/components/PageContainer.vue';
+
+@Component({
   components: {
     PageContainer,
-  },
-  mixins: [],
-  props: {},
-  data() {
-    return {
-      selectedTab: 0,
-      showPage: false,
-      showFooter: false,
-    };
-  },
-  computed: {
-    footerLink() {
-      if (this.selectedTab === 0) {
-        return 'https://www.youtube.com/watch?v=C_e-XtC1dDI';
-      }
-      return 'https://github.com/arthursb2016/house-of-angels';
-    },
-    footerText() {
-      if (this.selectedTab === 0) {
-        return 'Bring Angels to your life';
-      }
-      return 'Check out the repository';
-    },
   },
   async asyncData({ $content }) {
     const aboutAngels = await $content('about/angels')
       .fetch()
-      .catch((err) => {
+      .catch((err: unknown) => {
         console.error(err);
       });
     const aboutWebsite = await $content('about/website')
       .fetch()
-      .catch((err) => {
+      .catch((err: unknown) => {
         console.error(err);
       });
     return { aboutAngels, aboutWebsite };
   },
-  async mounted() {
+})
+export default class About extends Vue {
+  private selectedTab: number = 0;
+  private showPage: boolean = false;
+  private showFooter: boolean = false;
+
+  get footerLink() {
+    if (this.selectedTab === 0) {
+      return 'https://www.youtube.com/watch?v=C_e-XtC1dDI';
+    }
+    return 'https://github.com/arthursb2016/house-of-angels';    
+  }
+  get footerText() {
+    if (this.selectedTab === 0) {
+      return 'Bring Angels to your life';
+    }
+    return 'Check out the repository';
+  }
+
+  mounted() {
     setTimeout(() => {
       this.showPage = true;
       setTimeout(() => {
         this.showFooter = true;
       }, animationDelays.footer);
     }, animationDelays.pageMounted);
-  },
-  methods: {},
+  }
 };
 </script>
 <style lang="scss" scoped>
