@@ -12,6 +12,7 @@
     "@lottiefiles/lottie-player": "^1.4.1",
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/svg": "^0.3.0",
+    "@types/luxon": "^2.0.5",
     "core-js": "^3.15.1",
     "fs": "^0.0.1-security",
     "luxon": "^2.0.2",
@@ -26,7 +27,6 @@
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/vuetify": "^1.12.1",
-    "@types/luxon": "^2.0.5"
+    "@nuxtjs/vuetify": "^1.12.1"
   }
 }

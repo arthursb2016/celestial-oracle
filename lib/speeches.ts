@@ -1,11 +1,11 @@
-import { DateTime } from 'luxon';
+import { DateTime as Luxon } from 'luxon';
 
 const getCurrentHour = (): number => {
-  const dTime: DateTime = DateTime.now();
+  const dTime: any = Luxon.now();
   return dTime.c.hour;
 }
 
-const getCurrentWeekday = () => {
+const getCurrentWeekday = (): string => {
   const days = [
     'Monday',
     'Tuesday',
@@ -15,7 +15,7 @@ const getCurrentWeekday = () => {
     'Saturday',
     'Sunday',
   ];
-  return days[DateTime.now().weekday - 1];
+  return days[Luxon.now().weekday - 1];
 };
 
 export const greetings = [
