@@ -26,7 +26,7 @@ export default class BubbleBox extends Vue {
   isSpeech!: boolean
 
   @Watch('show')
-  showHasChanged() {
+  onShowChange() {
     if (!this.show) return;
     const bubble = document.getElementById('bubble');
     if (!bubble) return;
