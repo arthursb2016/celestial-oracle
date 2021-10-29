@@ -1,6 +1,9 @@
 import { DateTime } from 'luxon';
 
-const getCurrentHour = () => DateTime.now().c.hour;
+const getCurrentHour = (): number => {
+  const dTime: DateTime = DateTime.now();
+  return dTime.c.hour;
+}
 
 const getCurrentWeekday = () => {
   const days = [
