@@ -68,8 +68,17 @@ import BubbleBox from '~/components/BubbleBox.vue';
   components: {
     BubbleBox,
   },
+  async asyncData({ $content }) {
+    const data = await $content('angels')
+      .fetch()
+      .catch((err: unknown) => {
+        console.error(err);
+      });
+    return { data };
+  },
 })
 export default class Index extends Vue {
+  private data: Angel[] = [];
   private pageStep: number = 0;
   private greetings: boolean = false;
   private button: boolean = false;
@@ -91,23 +100,14 @@ export default class Index extends Vue {
     });
   }
   mounted() {
+    this.$store.commit('angels/setAngels', this.data);
     const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
     if (!lottieAngelPlayer) return;
-    this.loadAngels();
     lottieAngelPlayer.addEventListener('complete', () => {
       this.loadPageNextStep();
     });
   }
 
-  public async loadAngels() {
-    const { $content } = require('@nuxt/content')
-    const data = await $content('angels')
-      .fetch()
-      .catch((err: unknown) => {
-        console.error(err);
-      });
-    this.$store.commit('angels/setAngels', data);
-  }
   public loadPageNextStep(delaySpeed: string = '') {
     setTimeout(() => {
       this.pageStep++;
