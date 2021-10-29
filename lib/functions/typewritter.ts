@@ -1,21 +1,21 @@
-export const typewriter = (elem, text, speed, onDone) => {
+export const typewriter = (elem: HTMLElement, text: string, speed: number, onDone: Function): void => {
   let array = text.split('');
-  let timer;
+  let timer: number;
 
   const frameLooper = () => {
     if (array.length > 0) {
       const isLastChar = array.length === 1;
       const char = array.shift();
       let pauseTime = 0;
-      if (['!', '?', '.', ':'].includes(char) && !isLastChar) {
+      if (char && ['!', '?', '.', ':'].includes(char) && !isLastChar) {
         pauseTime = 600;
       } else if (char === ',') {
         pauseTime = 250;
       }
       elem.innerHTML += char;
-      timer = setTimeout(frameLooper, speed + pauseTime);
+      timer = window.setTimeout(frameLooper, speed + pauseTime);
     } else {
-      clearTimeout(timer);
+      window.clearTimeout(timer);
       onDone();
     }
   }
