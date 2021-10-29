@@ -15,37 +15,30 @@
     </div>
   </div>
 </template>
-<script>
-import animationDelays from '~/lib/delays';
+<script lang="ts">
+import {
+  Component,
+  Vue,
+  Prop,
+  Watch,
+} from 'vue-property-decorator';
 
-export default {
-  name: 'PageContainer',
-  components: {},
-  mixins: [],
-  props: {
-    show: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
-  data() {
-    return {
-      showContent: false,
-    };
-  },
-  computed: {},
-  watch: {},
-  mounted() {},
-  watch: {
-    show() {
-      if (this.show) {
-        setTimeout(() => {
-          this.showContent = true;
-        }, animationDelays.slow);
-      }
-    },
-  },
-  methods: {},
+import { animationDelays } from '~/lib/delays';
+
+@Component({})
+export default class PageContainer extends Vue {
+  private showContent: boolean = false;
+
+  @Prop({ default: false })
+  show!: boolean;
+
+  @Watch('show')
+  onShowChange() {
+    if (!this.show) return;
+    setTimeout(() => {
+      this.showContent = true;
+    }, animationDelays.slow);
+  }
 };
 </script>
 <style lang="scss" scoped>
