@@ -24,7 +24,9 @@ export class Animation {
   constructor(data: IAnimation, wWidth: number, wHeight: number) {
     this.name = data.name;
 
-    const aSizes: animationSize[] = ['small', 'medium', 'large'];
+    const aSizes: animationSize[] = ['small', 'medium', 'large'].filter((aS: any) => {
+      return data.sizes && Array.isArray(data.sizes) ? data.sizes.includes(aS) : true;
+    }) as animationSize[];
     const aSizeIndex = Math.floor(Math.random() * aSizes.length);
     this.size = aSizes[aSizeIndex];
 
