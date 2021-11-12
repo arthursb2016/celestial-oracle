@@ -6,11 +6,9 @@
     <lottie-player
       v-if="animation"
       id="backgroundAnimation"
-      :src="`/animations/${animation.name}.json`"
       mode="bounce"
       background="transparent"
       speed="1"
-      autoplay
       loop
       class="animation"
       :class="{
@@ -84,27 +82,35 @@ export default class BackgroundAnimator extends Vue {
   }
 
   public animate() {
-    if (!this.animations.length) {
-      return;
-    }
+    if (!this.animations.length) return;
+
     const index = Math.floor(Math.random() * this.animations.length);
     this.animation = new Animation(this.animations[index], this.windowWidth, this.windowHeight);
-    this.containerOpacity = 1;
-    const movIntervalStep: number = (this.animation.duration * 1000) / this.movStep;
-    this.movementInterval = setInterval(() => {
-      if (!this.animation) return;
-      const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
-      if (this.movementInterval && !isVisible) {
-        clearInterval(this.movementInterval);
-        this.containerOpacity = 0;
-        const minToNext = 2000;
-        const maxToNext = 4500;
-        const nextAnimationTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
-        setTimeout(() => {
-          this.animate();
-        }, nextAnimationTimeout);
-      }
-    }, movIntervalStep);
+
+    if (!this.animation) return;
+
+    setTimeout(() => {
+      const player: any = document.getElementById('backgroundAnimation');
+      player.load(`/animations/${this.animation!.name}.json`).then(() => {
+        this.containerOpacity = 1;
+
+        const movIntervalStep: number = (this.animation!.duration * 1000) / this.movStep;
+        this.movementInterval = setInterval(() => {
+          if (!this.animation) return
+          const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
+          if (this.movementInterval && !isVisible) {
+            clearInterval(this.movementInterval);
+            this.containerOpacity = 0;
+            const minToNext = 2000;
+            const maxToNext = 3500;
+            const nextAnimationTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
+            setTimeout(() => {
+              this.animate();
+            }, nextAnimationTimeout);
+          }
+        }, movIntervalStep);
+      });
+    }, 100);
   }
 
   mounted() {
@@ -134,7 +140,7 @@ export default class BackgroundAnimator extends Vue {
   width: 100%;
   height: 100%;
   position: absolute;
-  transition: opacity 800ms ease-out;
+  transition: opacity 1000ms ease-out;
 
   .animation {
     position: absolute;
