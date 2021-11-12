@@ -6,6 +6,13 @@ import {
   animationSize,
 } from '~/types/animation';
 
+const getRandFromRange = (range: Range | number): number => { 
+  if (typeof range === 'number') {
+    return range;
+  }
+  return Math.floor(Math.random() * (range.max - range.min + 1) + range.min)
+}
+
 export class Animation {
   public name: string;
   public size: animationSize;
@@ -15,10 +22,6 @@ export class Animation {
   public position: Position;
 
   constructor(data: IAnimation, wWidth: number, wHeight: number) {
-    const getRandFromRange = (range: Range) => { 
-      return Math.floor(Math.random() * (range.max - range.min + 1) + range.min)
-    }
-
     this.name = data.name;
 
     const aSizes: animationSize[] = ['small', 'medium', 'large'];
@@ -41,7 +44,7 @@ export class Animation {
 
   public move(wWidth: number, wHeight: number, step: number) {
     if (this.movement.distance.horizontal !== null) {
-      const xDistance = (wWidth * this.movement.distance.horizontal) / 100;
+      const xDistance = (wWidth * getRandFromRange(this.movement.distance.horizontal)) / 100;
       const direction = this.movement.start.left !== null ? 'left' : 'right';
       if (this.position[direction] !== null) {
         this.position[direction]! += xDistance / step;
@@ -51,7 +54,7 @@ export class Animation {
       }
     }
     if (this.movement.distance.vertical !== null) {
-      const yDistance = (wHeight * this.movement.distance.vertical) / 100;
+      const yDistance = (wHeight * getRandFromRange(this.movement.distance.vertical)) / 100;
       const direction = this.movement.start.top !== null ? 'top' : 'bottom';
       if (this.position[direction] !== null) {
         this.position[direction]! += yDistance / step;

@@ -21,8 +21,25 @@
             "left": 0
           },
           "distance": {
-            "vertical": 100,
-            "horizontal": 100
+            "horizontal": 100,
+            "vertical": 100
+          }
+        },
+        {
+          "depth": "behindClouds",
+          "transform": "rotate(260deg)",
+          "start": {
+            "top": null,
+            "right": 0,
+            "bottom": 0,
+            "left": null
+          },
+          "distance": {
+            "horizontal": 100,
+            "vertical": {
+              "min": 70,
+              "max": 80
+            }
           }
         }
       ]
