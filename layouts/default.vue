@@ -8,7 +8,12 @@
       }"
     >
       <background-animator />
-      <div class="app-background-image"></div>
+      <div
+        class="app-background-image"
+        :class="{
+          'night': isNight,
+        }"
+      ></div>
       <div class="app-content">
         <Nuxt />
       </div>
@@ -62,6 +67,10 @@ html, body {
     background-image: url('assets/background.png');
     background-size: cover;
     background-position: center center;
+
+    &.night {
+      opacity: 0.8;
+    }
   }
 
   .app-content {
