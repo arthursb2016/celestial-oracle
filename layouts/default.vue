@@ -49,6 +49,10 @@ html, body {
     background-color: $background-blue;
   }
 
+  &.night {
+    background-color: $background-black;
+  }
+
   .app-background-image {
     width: 100%;
     height: 100%;
