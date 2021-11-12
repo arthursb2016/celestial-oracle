@@ -43,18 +43,25 @@ export default class BackgroundAnimator extends Vue {
   private animation: Animation | null = null;
 
   private containerZIndex: number = 0;
+  private containerOpacity: number = 0;
 
   private movStep: number = 100;
 
 
   get containerStyles() {
-    if (!this.animation) return {};
+    const styles = {
+      'opacity': this.containerOpacity,
+    };
+    if (!this.animation) {
+      return styles;
+    }
     const appBgImg = document.querySelector('.app-background-image');
     if (!appBgImg) return {};
     const zIndex = window.getComputedStyle(appBgImg).getPropertyValue('z-index');
     const movement: Movement = this.animation.movement;
     const value = movement.depth === 'behindClouds' ? -1 : 1;
     return {
+      ...styles,
       'z-index': parseInt(zIndex) + value,
     };
   }
@@ -82,13 +89,20 @@ export default class BackgroundAnimator extends Vue {
     }
     const index = Math.floor(Math.random() * this.animations.length);
     this.animation = new Animation(this.animations[index], this.windowWidth, this.windowHeight);
+    this.containerOpacity = 1;
     const movIntervalStep: number = (this.animation.duration * 1000) / this.movStep;
     this.movementInterval = setInterval(() => {
       if (!this.animation) return;
       const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
       if (this.movementInterval && !isVisible) {
         clearInterval(this.movementInterval);
-        this.animate();
+        this.containerOpacity = 0;
+        const minToNext = 2000;
+        const maxToNext = 4500;
+        const nextAnimationTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
+        setTimeout(() => {
+          this.animate();
+        }, nextAnimationTimeout);
       }
     }, movIntervalStep);
   }
@@ -120,6 +134,7 @@ export default class BackgroundAnimator extends Vue {
   width: 100%;
   height: 100%;
   position: absolute;
+  transition: opacity 800ms ease-out;
 
   .animation {
     position: absolute;
