@@ -7,6 +7,7 @@
         'night': isNight,
       }"
     >
+      <background-animator />
       <div class="app-background-image"></div>
       <div class="app-content">
         <Nuxt />
@@ -19,6 +20,13 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import { getCurrentHour } from '~/lib/functions/datetime';
 
+import BackgroundAnimator from '~/components/BackgroundAnimator.vue';
+
+@Component({
+  components: {
+    BackgroundAnimator,
+  },
+})
 export default class DefaultLayout extends Vue {
   private isNight: boolean = false;
 
@@ -50,7 +58,7 @@ html, body {
     width: 100%;
     height: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     background-image: url('assets/background.png');
     background-size: cover;
     background-position: center center;
@@ -60,7 +68,7 @@ html, body {
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top: 0;
     left: 0;
   }

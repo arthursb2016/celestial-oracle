@@ -61,6 +61,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 import { Angel } from '~/types/angel';
+import { Animation } from '~/types/animation';
 import { animationDelays } from '~/lib/delays';
 import BubbleBox from '~/components/BubbleBox.vue';
 
@@ -69,16 +70,23 @@ import BubbleBox from '~/components/BubbleBox.vue';
     BubbleBox,
   },
   async asyncData({ $content }) {
-    const data = await $content('angels')
+    const angelData = await $content('angels')
       .fetch()
       .catch((err: unknown) => {
         console.error(err);
       });
-    return { data };
+    const animationData: any = await $content('animations')
+      .fetch()
+      .catch((err: unknown) => {
+        console.error(err);
+      });
+    const { animations } = animationData;
+    return { angelData, animations };
   },
 })
 export default class IndexPage extends Vue {
-  private data: Angel[] = [];
+  private angelData: Angel[] = [];
+  private animations: Animation[] = [];
   private pageStep: number = 0;
   private greetings: boolean = false;
   private button: boolean = false;
@@ -100,11 +108,12 @@ export default class IndexPage extends Vue {
     });
   }
   mounted() {
-    this.$store.commit('angels/setAngels', this.data);
+    this.$store.commit('angels/setAngels', this.angelData);
     const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
     if (!lottieAngelPlayer) return;
     lottieAngelPlayer.addEventListener('complete', () => {
       this.loadPageNextStep();
+      this.$nuxt.$emit('activate-background-animation', this.animations);
     });
   }
 

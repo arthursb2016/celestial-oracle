@@ -1,0 +1,21 @@
+{
+  "animations": [
+    {
+      "name": "rocket",
+      "duration": {
+        "min": 12,
+        "max": 20
+      },
+      "opacity": {
+        "min": 5,
+        "max": 8
+      },
+      "movements": [
+        {
+          "bottom": 0,
+          "left": 0
+        }
+      ]
+    }
+  ]
+}
