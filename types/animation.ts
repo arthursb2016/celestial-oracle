@@ -1,9 +1,12 @@
+export type animationPosition = 'behindClouds' : 'aheadClouds';
+
 export interface Range {
   min: number;
   max: number;
 }
 
 export interface Movement {
+  position: animationPosition;
   top?: number;
   right?: number;
   bottom?: number;

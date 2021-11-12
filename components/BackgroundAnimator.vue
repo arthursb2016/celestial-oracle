@@ -1,5 +1,8 @@
 <template>
-  <div class="background-animator-container">
+  <div
+    id="backgroundAnimatorContainer"
+    :style="containerStyles"
+  >
     <lottie-player
       v-if="animation"
       id="backgroundAnimation"
@@ -10,6 +13,9 @@
       autoplay
       loop
       class="animation"
+      :class="{
+        [animation.movement.position]: true,
+      }"
       :style="animationStyles"
     />
   </div>
@@ -30,8 +36,21 @@ export default class BackgroundAnimator extends Vue {
   private animations: IAnimation[] = [];
   private animation: Animation | null = null;
 
+  private containerZIndex: number = 0;
+
   private movStep: number = 100;
 
+
+  get containerStyles() {
+    if (!this.animation) return {};
+    const appBgImg = document.querySelector('.app-background-image');
+    if (!appBgImg) return {};
+    const zIndex = window.getComputedStyle(appBgImg)['z-index'];
+    const value = this.animation.movement.position === 'behindClouds' ? -1 : 1;
+    return {
+      'z-index': parseInt(zIndex) + value,
+    };
+  }
 
   get animationStyles() {
     if (!this.animation) return {};
@@ -55,6 +74,7 @@ export default class BackgroundAnimator extends Vue {
       const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
       if (this.movementInterval && !isVisible) {
         clearInterval(this.movementInterval);
+        this.animate();
       }
     }, movIntervalStep);
   }
@@ -74,20 +94,18 @@ export default class BackgroundAnimator extends Vue {
 
     updateWindowDimensions();
 
-   this.$nuxt.$on('activate-background-animation', (animationData: IAnimation[]) => {
-     this.animations = [...animationData];
-     this.animate();
-   });
+    this.$nuxt.$on('activate-background-animation', (animationData: IAnimation[]) => {
+      this.animations = [...animationData];
+      this.animate();
+    });
   }
 }
 </script>
 <style lang="scss" scoped>
-.background-animator-container {
+#backgroundAnimatorContainer {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 1;
-  opacity: 0.6;
 
   .animation {
     position: absolute;

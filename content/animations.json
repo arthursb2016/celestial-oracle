@@ -7,11 +7,12 @@
         "max": 12
       },
       "opacity": {
-        "min": 5,
-        "max": 8
+        "min": 3,
+        "max": 6
       },
       "movements": [
         {
+          "position": "aheadClouds",
           "bottom": 0,
           "left": 0,
           "transform": "rotate(30deg)"
