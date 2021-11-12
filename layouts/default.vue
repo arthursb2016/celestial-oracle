@@ -1,6 +1,12 @@
 <template>
   <v-app>
-    <v-main class="app-container">
+    <v-main
+      class="app-container"
+      :class="{
+        'day': true,
+        'night': false,
+      }"
+    >
       <div class="app-background-image"></div>
       <div class="app-content">
         <Nuxt />
@@ -30,14 +36,17 @@ html, body {
 
 .app-container {
   position: relative;
-  background-color: $background-blue;
+  
+  &.day {
+    background-color: $background-blue;
+  }
 
   .app-background-image {
     width: 100%;
     height: 100%;
     position: relative;
     z-index: 1;
-    background-image: url('assets/background.jpg');
+    background-image: url('assets/background.png');
     background-size: cover;
     background-position: center center;
   }
