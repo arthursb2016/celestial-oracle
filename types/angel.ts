@@ -1,4 +1,4 @@
-export interface Angel {
+export interface IAngel {
   name: string;
   slug: string;
   img_author: string;

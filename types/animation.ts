@@ -11,9 +11,9 @@ export interface Movement {
   rotate?: string;
 }
 
-export interface Animation {
+export interface IAnimation {
   name: string;
-  durationRage: Range;
-  opacityRange: Range;
+  duration: Range;
+  opacity: Range;
   movements: Movement[];
 }

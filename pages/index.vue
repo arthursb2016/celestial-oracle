@@ -60,8 +60,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import { Angel } from '~/types/angel';
-import { Animation } from '~/types/animation';
+import { IAngel } from '~/types/angel';
+import { IAnimation } from '~/types/animation';
 import { animationDelays } from '~/lib/delays';
 import BubbleBox from '~/components/BubbleBox.vue';
 
@@ -85,14 +85,14 @@ import BubbleBox from '~/components/BubbleBox.vue';
   },
 })
 export default class IndexPage extends Vue {
-  private angelData: Angel[] = [];
-  private animations: Animation[] = [];
+  private angelData: IAngel[] = [];
+  private animations: IAnimation[] = [];
   private pageStep: number = 0;
   private greetings: boolean = false;
   private button: boolean = false;
   private hasVisitedAngelsPage: boolean = false;
 
-  get angels(): Angel[] {
+  get angels(): IAngel[] {
     return this.$store.getters['angels/angels'];
   }
   get buttonText(): string {

@@ -1,6 +1,6 @@
 import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 
-import { Angel } from '../types/angel';
+import { IAngel } from '../types/angel';
 
 @Module({
   name: 'angels',
@@ -8,10 +8,10 @@ import { Angel } from '../types/angel';
   namespaced: true,
 })
 export default class extends VuexModule {
-  items: Angel[] = []
+  items: IAngel[] = []
 
   @Mutation
-  setAngels(items: Angel[]) {
+  setAngels(items: IAngel[]) {
     this.items = [...items];
   }
 
@@ -20,7 +20,7 @@ export default class extends VuexModule {
   }
   get getAngel() {
     return (slug: string) => {
-      return this.items.find((item: Angel) => item.slug === slug);
+      return this.items.find((item: IAngel) => item.slug === slug);
     }
   }
 }

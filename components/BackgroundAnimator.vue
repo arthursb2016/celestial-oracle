@@ -17,6 +17,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+import { IAnimation } from '~/types/animation';
 import { Animation } from '~/models/animation';
 
 @Component({})
@@ -26,7 +27,7 @@ export default class BackgroundAnimator extends Vue {
   private windowWidth: number = 0;
   private windowHeight: number = 0;
 
-  private animations: Animation[] = [];
+  private animations: IAnimation[] = [];
   private animation: Animation | null = null;
 
   public animate() {
@@ -57,7 +58,7 @@ export default class BackgroundAnimator extends Vue {
 
     updateWindowDimensions();
 
-   this.$nuxt.$on('activate-background-animation', (animationData: Animation[]) => {
+   this.$nuxt.$on('activate-background-animation', (animationData: IAnimation[]) => {
      this.animations = [...animationData];
      this.animate();
    });

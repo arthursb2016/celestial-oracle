@@ -1,6 +1,6 @@
-import { Angel as AngelInterface } from '~/types/angel';
+import { IAngel } from '~/types/angel';
 
-export class Angel implements AngelInterface {
+export class Angel implements IAngel {
   public name: string = '';
   public slug: string = '';
   public img_author: string = '';
@@ -8,7 +8,7 @@ export class Angel implements AngelInterface {
   public description: string = '';
   public phrase: string = '';
 
-  constructor(data?: AngelInterface) {
+  constructor(data?: IAngel) {
     if (!data) return;
     this.name = data.name;
     this.slug = data.slug;

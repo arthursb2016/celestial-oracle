@@ -1,5 +1,5 @@
 import {
-  Animation as AnimationInterface,
+  IAnimation,
   Movement,
   Range,
 } from '~/types/animation';
@@ -10,7 +10,7 @@ export class Animation {
   public opacity: number;
   public movement: Movement;
 
-  constructor(data: AnimationInterface) {
+  constructor(data: IAnimation) {
     const getRandFromRange = (range: Range) => { 
       return Math.floor(Math.random() * (range.max - range.min + 1) + range.min)
     }
