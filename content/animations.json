@@ -12,7 +12,7 @@
       },
       "movements": [
         {
-          "position": "aheadClouds",
+          "position": "behindClouds",
           "bottom": 0,
           "left": 0,
           "transform": "rotate(30deg)"

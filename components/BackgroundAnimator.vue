@@ -56,6 +56,7 @@ export default class BackgroundAnimator extends Vue {
     if (!this.animation) return {};
     const { movement } = this.animation;
     return {
+      opacity: this.animation.opacity,
       transform: movement.transform ? movement.transform : '',
       bottom: `${movement.bottom || 0}px`,
       left: `${movement.left || 0}px`,
