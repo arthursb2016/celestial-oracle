@@ -14,26 +14,19 @@
     </v-main>
   </v-app>
 </template>
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
 import { getCurrentHour } from '~/lib/functions/datetime';
 
-export default {
-  name: '',
-  components: {},
-  mixins: [],
-  props: {},
-  data() {
-    return {
-      isNight: false,
-    };
-  },
-  computed: {},
+export default class DefaultLayout extends Vue {
+  private isNight: boolean = false;
+
   mounted() {
     const currHour = getCurrentHour();
     this.isNight = currHour >= 18 || currHour < 5;
-  },
-  methods: {},
-};
+  }
+}
 </script>
 <style lang="scss">
 @import '~/assets/queries.scss';
