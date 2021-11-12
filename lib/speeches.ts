@@ -1,22 +1,4 @@
-import { DateTime as Luxon } from 'luxon';
-
-const getCurrentHour = (): number => {
-  const dTime: any = Luxon.now();
-  return dTime.c.hour;
-}
-
-const getCurrentWeekday = (): string => {
-  const days = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ];
-  return days[Luxon.now().weekday - 1];
-};
+import { getCurrentHour, getCurrentWeekday } from './functions/datetime';
 
 export const greetings = [
   () => {
@@ -32,7 +14,7 @@ export const greetings = [
 
   () => {
     const currHour = getCurrentHour();
-    const isMorning = currHour > 6 && currHour < 12;
+    const isMorning = currHour >= 5 && currHour < 12;
     const isAfternoon = currHour >= 12 && currHour < 18;
     const dynamicText = `Good ${isMorning ? 'morning' : isAfternoon ? 'afternoon' : 'night'}`;
     return `${dynamicText} my friend! Welcome to the House of Angels, a place full of peace and love. Would you like to meet an actual Angel today?`;

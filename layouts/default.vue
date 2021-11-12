@@ -3,8 +3,8 @@
     <v-main
       class="app-container"
       :class="{
-        'day': true,
-        'night': false,
+        'day': !isNight,
+        'night': isNight,
       }"
     >
       <div class="app-background-image"></div>
@@ -15,15 +15,23 @@
   </v-app>
 </template>
 <script>
+import { getCurrentHour } from '~/lib/functions/datetime';
+
 export default {
   name: '',
   components: {},
   mixins: [],
   props: {},
   data() {
-    return {};
+    return {
+      isNight: false,
+    };
   },
   computed: {},
+  mounted() {
+    const currHour = getCurrentHour();
+    this.isNight = currHour >= 18 || currHour < 5;
+  },
   methods: {},
 };
 </script>
