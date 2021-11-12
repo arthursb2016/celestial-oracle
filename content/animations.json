@@ -43,6 +43,51 @@
           }
         }
       ]
+    },
+    {
+      "name": "spaceship",
+      "sizes": ["small", "medium"],
+      "duration": {
+        "min": 8,
+        "max": 11
+      },
+      "opacity": {
+        "min": 5,
+        "max": 6
+      },
+      "movements": [
+        {
+          "depth": "behindClouds",
+          "transform": "none",
+          "start": {
+            "top": 5,
+            "right": null,
+            "bottom": null,
+            "left": 0
+          },
+          "distance": {
+            "horizontal": 100,
+            "vertical": null
+          }
+        },
+        {
+          "depth": "behindClouds",
+          "transform": "none",
+          "start": {
+            "top": 5,
+            "right": 0,
+            "bottom": null,
+            "left": null
+          },
+          "distance": {
+            "horizontal": {
+              "min": 90,
+              "max": 100
+            },
+            "vertical": 90
+          }
+        }
+      ]
     }
   ]
 }
