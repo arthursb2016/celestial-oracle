@@ -14,6 +14,7 @@
       loop
       class="animation"
       :class="{
+        [animation.size]: true,
         [animation.movement.position]: true,
       }"
       :style="animationStyles"
@@ -23,7 +24,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import { IAnimation } from '~/types/animation';
+import { IAnimation, Movement } from '~/types/animation';
 import { Animation } from '~/models/animation';
 
 @Component({})
@@ -45,8 +46,9 @@ export default class BackgroundAnimator extends Vue {
     if (!this.animation) return {};
     const appBgImg = document.querySelector('.app-background-image');
     if (!appBgImg) return {};
-    const zIndex = window.getComputedStyle(appBgImg)['z-index'];
-    const value = this.animation.movement.position === 'behindClouds' ? -1 : 1;
+    const zIndex = window.getComputedStyle(appBgImg).getPropertyValue('z-index');
+    const movement: Movement = this.animation.movement;
+    const value = movement.position === 'behindClouds' ? -1 : 1;
     return {
       'z-index': parseInt(zIndex) + value,
     };
@@ -54,7 +56,7 @@ export default class BackgroundAnimator extends Vue {
 
   get animationStyles() {
     if (!this.animation) return {};
-    const { movement } = this.animation;
+    const movement: Movement = this.animation.movement;
     return {
       opacity: this.animation.opacity,
       transform: movement.transform ? movement.transform : '',
@@ -110,8 +112,21 @@ export default class BackgroundAnimator extends Vue {
 
   .animation {
     position: absolute;
-    width: 10rem;
-    height: 10rem;
+
+    &.small {
+      width: 9.25rem;
+      height: 9.25rem;
+    }
+
+    &.medium {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    &.large {
+      width: 10.75rem;
+      height: 10.75rem;
+    }
   }
 }
 </style>

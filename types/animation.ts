@@ -1,3 +1,4 @@
+export type animationSize = 'small' | 'medium' | 'large';
 export type animationPosition = 'behindClouds' : 'aheadClouds';
 
 export interface Range {
@@ -16,6 +17,7 @@ export interface Movement {
 
 export interface IAnimation {
   name: string;
+  size: animationSize;
   duration: Range;
   opacity: Range;
   movements: Movement[];
