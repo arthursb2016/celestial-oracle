@@ -20,4 +20,13 @@ export class Animation {
     const movIndex = Math.floor(Math.random() * data.movements.length);
     this.movement = { ...data.movements[movIndex] };
   }
+
+  public move(wWidth: number, wHeight: number, step: number) {
+    if (typeof this.movement.left != 'undefined') {
+      this.movement.left += wWidth / step;
+    }
+    if (typeof this.movement.bottom != 'undefined') {
+      this.movement.bottom += wHeight / step;
+    }
+  }
 }

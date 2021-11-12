@@ -30,17 +30,30 @@ export default class BackgroundAnimator extends Vue {
   private animations: IAnimation[] = [];
   private animation: Animation | null = null;
 
+  private movStep: number = 100;
+
+
+  get animationStyles() {
+    if (!this.animation) return {};
+    const { movement } = this.animation;
+    console.log(movement);
+    return {
+      bottom: `${movement.bottom || 0}px`,
+      left: `${movement.left || 0}px`,
+    };
+  }
+
   public animate() {
-    if (!this.animations.length) return;
+    if (!this.animations.length) {
+      return;
+    }
     const index = Math.floor(Math.random() * this.animations.length);
-    const animation = new Animation(this.animations[index]);
-    console.log('i animate');
-    console.log(animation);
-    /*const movIntervalStep = 
+    this.animation = new Animation(this.animations[index]);
+    const movIntervalStep: number = (this.animation.duration * 1000) / this.movStep;
     this.movementInterval = setInterval(() => {
-      this.bottom += this.windowHeight / intervalStep;
-      this.left += this.windowWidth / intervalStep;
-    }, intervalStep);*/
+      if (!this.animation) return;
+      this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
+    }, movIntervalStep);
   }
 
   mounted() {
