@@ -15,7 +15,7 @@
       class="animation"
       :class="{
         [animation.size]: true,
-        [animation.movement.position]: true,
+        [animation.movement.depth]: true,
       }"
       :style="animationStyles"
     />
@@ -24,7 +24,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import { IAnimation, Movement } from '~/types/animation';
+import {
+  IAnimation,
+  Movement,
+  Position,
+  PositionName,
+} from '~/types/animation';
 import { Animation } from '~/models/animation';
 
 @Component({})
@@ -48,7 +53,7 @@ export default class BackgroundAnimator extends Vue {
     if (!appBgImg) return {};
     const zIndex = window.getComputedStyle(appBgImg).getPropertyValue('z-index');
     const movement: Movement = this.animation.movement;
-    const value = movement.position === 'behindClouds' ? -1 : 1;
+    const value = movement.depth === 'behindClouds' ? -1 : 1;
     return {
       'z-index': parseInt(zIndex) + value,
     };
@@ -57,12 +62,18 @@ export default class BackgroundAnimator extends Vue {
   get animationStyles() {
     if (!this.animation) return {};
     const movement: Movement = this.animation.movement;
-    return {
+    const position: Position = this.animation.position;
+    const styles: any = {
       opacity: this.animation.opacity,
       transform: movement.transform ? movement.transform : '',
-      bottom: `${movement.bottom || 0}px`,
-      left: `${movement.left || 0}px`,
     };
+    const positionNames: PositionName[] = ['top', 'right', 'bottom', 'left'];
+    positionNames.forEach((pos) => {
+      if (position[pos] !== null) {
+        styles[pos] = `${position[pos]}px`;
+      }
+    });
+    return styles;
   }
 
   public animate() {
@@ -70,7 +81,7 @@ export default class BackgroundAnimator extends Vue {
       return;
     }
     const index = Math.floor(Math.random() * this.animations.length);
-    this.animation = new Animation(this.animations[index]);
+    this.animation = new Animation(this.animations[index], this.windowWidth, this.windowHeight);
     const movIntervalStep: number = (this.animation.duration * 1000) / this.movStep;
     this.movementInterval = setInterval(() => {
       if (!this.animation) return;
@@ -114,8 +125,8 @@ export default class BackgroundAnimator extends Vue {
     position: absolute;
 
     &.small {
-      width: 9.25rem;
-      height: 9.25rem;
+      width: 8.5rem;
+      height: 8.5rem;
     }
 
     &.medium {
@@ -124,8 +135,8 @@ export default class BackgroundAnimator extends Vue {
     }
 
     &.large {
-      width: 10.75rem;
-      height: 10.75rem;
+      width: 12rem;
+      height: 12rem;
     }
   }
 }

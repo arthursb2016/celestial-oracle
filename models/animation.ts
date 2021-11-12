@@ -2,6 +2,7 @@ import {
   IAnimation,
   Movement,
   Range,
+  Position,
   animationSize,
 } from '~/types/animation';
 
@@ -11,30 +12,52 @@ export class Animation {
   public duration: number;
   public opacity: number;
   public movement: Movement;
+  public position: Position;
 
-  constructor(data: IAnimation) {
+  constructor(data: IAnimation, wWidth: number, wHeight: number) {
     const getRandFromRange = (range: Range) => { 
       return Math.floor(Math.random() * (range.max - range.min + 1) + range.min)
     }
+
     this.name = data.name;
-    this.size = data.size;
+
+    const aSizes: animationSize[] = ['small', 'medium', 'large'];
+    const aSizeIndex = Math.floor(Math.random() * aSizes.length);
+    this.size = aSizes[aSizeIndex];
+
     this.duration = getRandFromRange(data.duration);
     this.opacity = getRandFromRange(data.opacity) / 10;
+
     const movIndex = Math.floor(Math.random() * data.movements.length);
     this.movement = { ...data.movements[movIndex] };
+
+    this.position = {
+      top: this.movement.start.top === null ? null : (this.movement.start.top * wHeight) / 100,
+      right: this.movement.start.right === null ? null : (this.movement.start.right * wWidth) / 100,
+      bottom: this.movement.start.bottom === null ? null : (this.movement.start.bottom * wHeight) / 100,
+      left: this.movement.start.left === null ? null : (this.movement.start.left * wWidth) / 100,
+    };
   }
 
   public move(wWidth: number, wHeight: number, step: number) {
-    if (typeof this.movement.left != 'undefined') {
-      this.movement.left += wWidth / step;
-      if (this.movement.left > wWidth) {
-        return false;
+    if (this.movement.distance.horizontal !== null) {
+      const xDistance = (wWidth * this.movement.distance.horizontal) / 100;
+      const direction = this.movement.start.left !== null ? 'left' : 'right';
+      if (this.position[direction] !== null) {
+        this.position[direction]! += xDistance / step;
+        if (this.position[direction]! > xDistance) {
+          return false;
+        }
       }
     }
-    if (typeof this.movement.bottom != 'undefined') {
-      this.movement.bottom += wHeight / step;
-      if (this.movement.bottom > wHeight) {
-        return false;
+    if (this.movement.distance.vertical !== null) {
+      const yDistance = (wHeight * this.movement.distance.vertical) / 100;
+      const direction = this.movement.start.top !== null ? 'top' : 'bottom';
+      if (this.position[direction] !== null) {
+        this.position[direction]! += yDistance / step;
+        if (this.position[direction]! > yDistance) {
+          return false;
+        }
       }
     }
     return true;

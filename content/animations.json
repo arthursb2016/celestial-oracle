@@ -2,7 +2,6 @@
   "animations": [
     {
       "name": "rocket",
-      "size": "medium",
       "duration": {
         "min": 8,
         "max": 12
@@ -13,10 +12,18 @@
       },
       "movements": [
         {
-          "position": "behindClouds",
-          "bottom": 0,
-          "left": 0,
-          "transform": "rotate(30deg)"
+          "depth": "behindClouds",
+          "transform": "rotate(30deg)",
+          "start": {
+            "top": null,
+            "right": null,
+            "bottom": 0,
+            "left": 0
+          },
+          "distance": {
+            "vertical": 100,
+            "horizontal": 100
+          }
         }
       ]
     }
