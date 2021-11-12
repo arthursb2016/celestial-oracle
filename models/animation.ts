@@ -24,9 +24,16 @@ export class Animation {
   public move(wWidth: number, wHeight: number, step: number) {
     if (typeof this.movement.left != 'undefined') {
       this.movement.left += wWidth / step;
+      if (this.movement.left > wWidth) {
+        return false;
+      }
     }
     if (typeof this.movement.bottom != 'undefined') {
       this.movement.bottom += wHeight / step;
+      if (this.movement.bottom > wHeight) {
+        return false;
+      }
     }
+    return true;
   }
 }

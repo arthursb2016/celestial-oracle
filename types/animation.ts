@@ -8,7 +8,7 @@ export interface Movement {
   right?: number;
   bottom?: number;
   left?: number;
-  rotate?: string;
+  transform?: string;
 }
 
 export interface IAnimation {

@@ -4,7 +4,7 @@
       "name": "rocket",
       "duration": {
         "min": 8,
-        "max": 15
+        "max": 12
       },
       "opacity": {
         "min": 5,
@@ -13,7 +13,8 @@
       "movements": [
         {
           "bottom": 0,
-          "left": 0
+          "left": 0,
+          "transform": "rotate(30deg)"
         }
       ]
     }

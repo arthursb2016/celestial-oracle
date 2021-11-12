@@ -36,8 +36,8 @@ export default class BackgroundAnimator extends Vue {
   get animationStyles() {
     if (!this.animation) return {};
     const { movement } = this.animation;
-    console.log(movement);
     return {
+      transform: movement.transform ? movement.transform : '',
       bottom: `${movement.bottom || 0}px`,
       left: `${movement.left || 0}px`,
     };
@@ -52,7 +52,10 @@ export default class BackgroundAnimator extends Vue {
     const movIntervalStep: number = (this.animation.duration * 1000) / this.movStep;
     this.movementInterval = setInterval(() => {
       if (!this.animation) return;
-      this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
+      const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
+      if (this.movementInterval && !isVisible) {
+        clearInterval(this.movementInterval);
+      }
     }, movIntervalStep);
   }
 
