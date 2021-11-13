@@ -1,0 +1,70 @@
+{
+  "name": "alienship",
+  "sizes": ["xsmall", "small", "medium"],
+  "duration": {
+    "min": 8,
+    "max": 11
+  },
+  "opacity": {
+    "min": 3,
+    "max": 4
+  },
+  "movements": [
+    {
+      "depth": "aheadClouds",
+      "transform": "none",
+      "start": {
+        "top": 3,
+        "right": null,
+        "bottom": null,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical":null
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "none",
+      "start": {
+        "top": 12,
+        "right": null,
+        "bottom": null,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical":null
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "none",
+      "start": {
+        "top": 5,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical":null
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "none",
+      "start": {
+        "top": 18,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical":null
+      }
+    }
+  ]
+}
