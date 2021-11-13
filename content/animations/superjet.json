@@ -1,0 +1,70 @@
+{
+  "name": "superjet",
+  "sizes": ["small", "medium"],
+  "duration": {
+    "min": 5,
+    "max": 7
+  },
+  "opacity": {
+    "min": 3,
+    "max": 4
+  },
+  "movements": [
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(200deg)",
+      "start": {
+        "top": 0,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": 90
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(80deg)",
+      "start": {
+        "top": 10,
+        "right": null,
+        "bottom": null,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": 90
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(25deg)",
+      "start": {
+        "top": null,
+        "right": null,
+        "bottom": 50,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(260deg)",
+      "start": {
+        "top": null,
+        "right": 0,
+        "bottom": 50,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": 90
+      }
+    }
+  ]
+}
