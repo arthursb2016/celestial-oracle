@@ -2,7 +2,7 @@
   "name": "superjet",
   "sizes": ["small", "medium"],
   "duration": {
-    "min": 5,
+    "min": 6,
     "max": 7
   },
   "opacity": {
