@@ -6,10 +6,12 @@
     <lottie-player
       v-if="animation"
       id="backgroundAnimation"
+      :src="`/animations/${animation.name}.json`"
       mode="bounce"
       background="transparent"
       speed="1"
       loop
+      autoplay
       class="animation"
       :class="{
         [animation.size]: true,
@@ -94,26 +96,24 @@ export default class BackgroundAnimator extends Vue {
     if (!this.animation) return;
 
     setTimeout(() => {
-      const player: any = document.getElementById('backgroundAnimation');
-      player.load(`/animations/${this.animation!.name}.json`).then(() => {
-        this.containerOpacity = 1;
+      this.containerOpacity = 1;
 
-        const movIntervalStep: number = (this.animation!.duration * 1000) / this.movStep;
-        this.movementInterval = setInterval(() => {
-          if (!this.animation) return
-          const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
-          if (this.movementInterval && !isVisible) {
-            clearInterval(this.movementInterval);
-            this.containerOpacity = 0;
-            const minToNext = 2000;
-            const maxToNext = 3500;
-            const nextAnimationTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
-            setTimeout(() => {
-              this.animate();
-            }, nextAnimationTimeout);
-          }
-        }, movIntervalStep);
-      });
+      const movIntervalStep: number = (this.animation!.duration * 1000) / this.movStep;
+      this.movementInterval = setInterval(() => {
+        if (!this.animation) return
+        const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
+        if (this.movementInterval && !isVisible) {
+          clearInterval(this.movementInterval);
+          this.animation = null;
+          this.containerOpacity = 0;
+          const minToNext = 2000;
+          const maxToNext = 3500;
+          const nextTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
+          setTimeout(() => {
+            this.animate();
+          }, nextTimeout);
+        }
+      }, movIntervalStep);
     }, 100);
   }
 
