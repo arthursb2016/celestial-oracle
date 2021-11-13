@@ -1,0 +1,41 @@
+{
+  "name": "spacebus",
+  "duration": {
+    "min": 9,
+    "max": 14
+  },
+  "opacity": {
+    "min": 4,
+    "max": 7
+  },
+  "movements": [
+    {
+      "depth": "aheadClouds",
+      "transform": "rotate(210deg)",
+      "start": {
+        "top": 10,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": null
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "rotate(25deg)",
+      "start": {
+        "top": 0,
+        "right": null,
+        "bottom": null,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": null
+      }
+    }
+  ]
+}
