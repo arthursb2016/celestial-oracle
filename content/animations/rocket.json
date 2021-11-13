@@ -1,0 +1,44 @@
+{
+  "name": "rocket",
+  "duration": {
+    "min": 8,
+    "max": 12
+  },
+  "opacity": {
+    "min": 3,
+    "max": 6
+  },
+  "movements": [
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(30deg)",
+      "start": {
+        "top": null,
+        "right": null,
+        "bottom": 0,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(260deg)",
+      "start": {
+        "top": null,
+        "right": 0,
+        "bottom": 0,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": {
+          "min": 70,
+          "max": 80
+        }
+      }
+    }
+  ]
+}

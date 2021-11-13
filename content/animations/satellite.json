@@ -1,0 +1,62 @@
+{
+  "name": "satellite",
+  "sizes": ["medium", "large"],
+  "duration": {
+    "min": 7,
+    "max": 10
+  },
+  "opacity": {
+    "min": 3,
+    "max": 4
+  },
+  "movements": [
+    {
+      "depth": "aheadClouds",
+      "transform": "none",
+      "start": {
+        "top": null,
+        "right": null,
+        "bottom": 20,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": null
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "none",
+      "start": {
+        "top": 15,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": {
+          "min": 50,
+          "max": 70
+        }
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "none",
+      "start": {
+        "top": 10,
+        "right": null,
+        "bottom": null,
+        "left": 10
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": {
+          "min": 70,
+          "max": 100
+        }
+      }
+    }
+  ]
+}

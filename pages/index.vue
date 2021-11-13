@@ -80,13 +80,12 @@ import BubbleBox from '~/components/BubbleBox.vue';
       .catch((err: unknown) => {
         console.error(err);
       });
-    const { animations } = animationData;
-    return { angelData, animations };
+    return { angelData, animationData };
   },
 })
 export default class IndexPage extends Vue {
   private angelData: IAngel[] = [];
-  private animations: IAnimation[] = [];
+  private animationData: IAnimation[] = [];
   private pageStep: number = 0;
   private greetings: boolean = false;
   private button: boolean = false;
@@ -114,7 +113,7 @@ export default class IndexPage extends Vue {
     lottieAngelPlayer.addEventListener('complete', () => {
       this.loadPageNextStep();
       setTimeout(() => {
-        this.$nuxt.$emit('activate-background-animation', this.animations);
+        this.$nuxt.$emit('activate-background-animation', this.animationData);
       }, animationDelays.background);
     });
   }
