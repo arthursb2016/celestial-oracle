@@ -1,6 +1,6 @@
 {
   "name": "spaceship",
-  "sizes": ["small", "medium"],
+  "sizes": ["small"],
   "duration": {
     "min": 8,
     "max": 11
