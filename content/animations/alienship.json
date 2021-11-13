@@ -1,6 +1,6 @@
 {
   "name": "alienship",
-  "sizes": ["xsmall", "small", "medium"],
+  "sizes": ["xsmall", "small"],
   "duration": {
     "min": 8,
     "max": 11
