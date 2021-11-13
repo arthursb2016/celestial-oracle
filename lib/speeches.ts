@@ -22,7 +22,7 @@ export const greetings = [
 
   () => {
     const weekday = getCurrentWeekday();
-    return `Hello my dear, I am so happy you are here! Please take a moment of reflection to meet an celestial Angel: It will make your ${weekday} much better.`
+    return `Hello my dear, I am so happy you are here! Please take a moment of reflection to meet a celestial Angel: It will make your ${weekday} much better.`
   },
 ];
 
