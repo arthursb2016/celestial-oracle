@@ -6,7 +6,7 @@ $baseHeight: 1440;
 $widthProportion: 16;
 $heightProportion: 9;
 
-$multiplier: 5;
+$ruleMultipler: $baseWidth / ($baseFontSize * $widthProportion);
 
 html {
   font-size: $baseFontSize + px;
@@ -20,8 +20,8 @@ $height: $baseHeight;
 @while $count < $baseFontSize {
   $fontSize: $baseFontSize - $count;
 
-  $width: $width - ($widthProportion * $multiplier);
-  $height: $height - ($heightProportion * $multiplier);
+  $width: $width - ($widthProportion * $ruleMultipler);
+  $height: $height - ($heightProportion * $ruleMultipler);
 
   @if ($width > 0 and $height > 0) {
     $maxWidth: $width + px;
@@ -43,8 +43,8 @@ $height: $baseWidth;
 @while $count < $baseFontSize {
   $fontSize: $baseFontSize - $count;
 
-  $width: $width - ($heightProportion * $multiplier);
-  $height: $height - ($widthProportion * $multiplier);
+  $width: $width - ($heightProportion * $ruleMultipler);
+  $height: $height - ($widthProportion * $ruleMultipler);
 
   @if ($width > 0 and $height > 0) {
     $maxWidth: $width + px;
