@@ -84,6 +84,10 @@ export default class BackgroundAnimator extends Vue {
   public animate() {
     if (!this.animations.length) return;
 
+    if (this.movementInterval) {
+      clearInterval(this.movementInterval);
+    }
+
     const index = Math.floor(Math.random() * this.animations.length);
     this.animation = new Animation(this.animations[index], this.windowWidth, this.windowHeight);
 
