@@ -1,11 +1,10 @@
 <template>
   <div
-    id="backgroundAnimatorContainer"
+    class="background-animator-container"
     :style="containerStyles"
   >
     <lottie-player
       v-if="animation"
-      id="backgroundAnimation"
       :src="`/animations/${animation.name}.json`"
       mode="bounce"
       background="transparent"
@@ -22,7 +21,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import {
   IAnimation,
@@ -34,6 +33,9 @@ import { Animation } from '~/models/animation';
 
 @Component({})
 export default class BackgroundAnimator extends Vue {
+  @Prop({ default: '' })
+  persist?: string | string[];
+
   private movementInterval: ReturnType<typeof setInterval> | null = null;
 
   private windowWidth: number = 0;
@@ -83,14 +85,14 @@ export default class BackgroundAnimator extends Vue {
     return styles;
   }
 
-  public animate(index?: number, count?: number) {
+  public animate() {
     if (!this.animations.length) return;
 
     if (this.movementInterval) {
       clearInterval(this.movementInterval);
     }
 
-    const aIndex = typeof index !== 'undefined' ? index : Math.floor(Math.random() * this.animations.length);
+    const aIndex = Math.floor(Math.random() * this.animations.length);
     this.animation = new Animation(this.animations[aIndex], this.windowWidth, this.windowHeight);
 
     if (!this.animation) return;
@@ -105,18 +107,13 @@ export default class BackgroundAnimator extends Vue {
         const isVisible = this.animation.move(this.windowWidth, this.windowHeight, intervalStep);
         if (this.movementInterval && !isVisible) {
           clearInterval(this.movementInterval);
-          const repeatCount = this.animation.repeat ? (this.animation.repeat - ((count || 0) + 1)) : 0;
           this.animation = null;
           this.containerOpacity = 0;
-          const minToNext = 2000;
-          const maxToNext = 3500;
+          const minToNext = !!this.persist ? 1000 : 2000;
+          const maxToNext = !!this.persist ? 2000 : 3500;
           const nextTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
           setTimeout(() => {
-            if (repeatCount) {
-              this.animate(aIndex, repeatCount);
-            } else {
-              this.animate();
-            }
+            this.animate();
           }, nextTimeout);
         }
       }, intervalStep);
@@ -140,14 +137,19 @@ export default class BackgroundAnimator extends Vue {
 
     this.$nuxt.$on('activate-background-animation', (animationData: IAnimation[]) => {
       if (this.movementInterval) return;
-      this.animations = [...animationData];
+      this.animations = [...animationData].filter((i) => {
+        if (this.persist) {
+          return i.name === this.persist;
+        }
+        return true;
+      });
       this.animate();
     });
   }
 }
 </script>
 <style lang="scss" scoped>
-#backgroundAnimatorContainer {
+.background-animator-container {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -155,6 +157,11 @@ export default class BackgroundAnimator extends Vue {
 
   .animation {
     position: absolute;
+
+    &.xsmall {
+      width: 7.5rem;
+      height: 7.5rem
+    }
 
     &.small {
       width: 8.5rem;
@@ -169,6 +176,16 @@ export default class BackgroundAnimator extends Vue {
     &.large {
       width: 11.6rem;
       height: 11.6rem;
+    }
+
+    &.xlarge {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    &.xxlarge {
+      width: 18rem;
+      height: 18rem;
     }
   }
 }

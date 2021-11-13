@@ -16,7 +16,6 @@ const getRandFromRange = (range: Range | number): number => {
 export class Animation {
   public name: string;
   public size: animationSize;
-  public repeat: number;
   public duration: number;
   public opacity: number;
   public movement: Movement;
@@ -25,13 +24,12 @@ export class Animation {
   constructor(data: IAnimation, wWidth: number, wHeight: number) {
     this.name = data.name;
 
-    const aSizes: animationSize[] = ['small', 'medium', 'large'].filter((aS: any) => {
+    const aSizes: animationSize[] = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'].filter((aS: any) => {
       return data.sizes && Array.isArray(data.sizes) ? data.sizes.includes(aS) : true;
     }) as animationSize[];
     const aSizeIndex = Math.floor(Math.random() * aSizes.length);
     this.size = aSizes[aSizeIndex];
 
-    this.repeat = typeof data.repeat != 'undefined' ? data.repeat : 0;
     this.duration = getRandFromRange(data.duration);
     this.opacity = getRandFromRange(data.opacity) / 10;
 

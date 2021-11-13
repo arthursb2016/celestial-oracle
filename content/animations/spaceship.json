@@ -1,6 +1,6 @@
 {
   "name": "spaceship",
-  "sizes": ["small"],
+  "sizes": ["xsmall"],
   "duration": {
     "min": 8,
     "max": 11
@@ -54,6 +54,23 @@
         "horizontal": {
           "min": 70,
           "max": 85
+        },
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "none",
+      "start": {
+        "top": null,
+        "right": null,
+        "bottom": 0,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": {
+          "min": 80,
+          "max": 100
         },
         "vertical": 100
       }

@@ -1,4 +1,4 @@
-export type animationSize = 'small' | 'medium' | 'large';
+export type animationSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
 
 export interface Range {
   min: number;
@@ -31,7 +31,6 @@ export interface Movement {
 export interface IAnimation {
   name: string;
   sizes?: animationSize[];
-  repeat?: number;
   duration: Range;
   opacity: Range;
   movements: Movement[];

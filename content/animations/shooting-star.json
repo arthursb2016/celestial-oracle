@@ -1,24 +1,23 @@
 {
   "name": "shooting-star",
-  "sizes": ["large"],
-  "repeat": 2,
+  "sizes": ["xlarge", "xxlarge"],
   "duration": {
-    "min": 6,
-    "max": 8
+    "min": 8,
+    "max": 10
   },
   "opacity": {
-    "min": 4,
-    "max": 6
+    "min": 2,
+    "max": 4
   },
   "movements": [
     {
-      "depth": "behindClouds",
-      "transform": "rotate(230deg)",
+      "depth": "aheadClouds",
+      "transform": "rotate(55deg)",
       "start": {
-        "top": null,
+        "top": 0,
         "right": null,
-        "bottom": 0,
-        "left": 10
+        "bottom": null,
+        "left": 2
       },
       "distance": {
         "horizontal": null,
@@ -40,20 +39,6 @@
       }
     },
     {
-      "depth": "behindClouds",
-      "transform": "rotate(230deg)",
-      "start": {
-        "top": null,
-        "right": null,
-        "bottom": 0,
-        "left": 22
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
       "depth": "aheadClouds",
       "transform": "rotate(55deg)",
       "start": {
@@ -68,25 +53,11 @@
       }
     },
     {
-      "depth": "behindClouds",
-      "transform": "rotate(230deg)",
-      "start": {
-        "top": null,
-        "right": 5,
-        "bottom": 0,
-        "left": null
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
       "depth": "aheadClouds",
       "transform": "rotate(55deg)",
       "start": {
         "top": 0,
-        "right": 15,
+        "right": 3,
         "bottom": null,
         "left": null
       },
@@ -96,12 +67,12 @@
       }
     },
     {
-      "depth": "behindClouds",
-      "transform": "rotate(230deg)",
+      "depth": "aheadClouds",
+      "transform": "rotate(55deg)",
       "start": {
-        "top": null,
-        "right": 18,
-        "bottom": 0,
+        "top": 0,
+        "right": 8,
+        "bottom": null,
         "left": null
       },
       "distance": {
@@ -114,7 +85,7 @@
       "transform": "rotate(55deg)",
       "start": {
         "top": 0,
-        "right": 21,
+        "right": 10,
         "bottom": null,
         "left": null
       },

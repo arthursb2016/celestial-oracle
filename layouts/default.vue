@@ -8,6 +8,7 @@
       }"
     >
       <background-animator />
+      <background-animator persist="shooting-star" />
       <div
         class="app-background-image"
         :class="{
