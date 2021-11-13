@@ -31,6 +31,7 @@ export interface Movement {
 export interface IAnimation {
   name: string;
   sizes?: animationSize[];
+  repeat?: number;
   duration: Range;
   opacity: Range;
   movements: Movement[];

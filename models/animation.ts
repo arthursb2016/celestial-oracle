@@ -16,6 +16,7 @@ const getRandFromRange = (range: Range | number): number => {
 export class Animation {
   public name: string;
   public size: animationSize;
+  public repeat: number;
   public duration: number;
   public opacity: number;
   public movement: Movement;
@@ -30,6 +31,7 @@ export class Animation {
     const aSizeIndex = Math.floor(Math.random() * aSizes.length);
     this.size = aSizes[aSizeIndex];
 
+    this.repeat = typeof data.repeat != 'undefined' ? data.repeat : 0;
     this.duration = getRandFromRange(data.duration);
     this.opacity = getRandFromRange(data.opacity) / 10;
 
