@@ -139,6 +139,7 @@ export default class BackgroundAnimator extends Vue {
     updateWindowDimensions();
 
     this.$nuxt.$on('activate-background-animation', (animationData: IAnimation[]) => {
+      if (this.movementInterval) return;
       this.animations = [...animationData];
       this.animate();
     });
