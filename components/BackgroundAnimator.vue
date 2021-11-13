@@ -45,7 +45,7 @@ export default class BackgroundAnimator extends Vue {
   private containerZIndex: number = 0;
   private containerOpacity: number = 0;
 
-  private movStep: number = 100;
+  private movStep: number = 120;
 
 
   get containerStyles() {
@@ -98,10 +98,11 @@ export default class BackgroundAnimator extends Vue {
     setTimeout(() => {
       this.containerOpacity = 1;
 
-      const movIntervalStep: number = (this.animation!.duration * 1000) / this.movStep;
+      const step = (this.animation!.duration * 1000) / this.movStep;
+      const intervalStep: number = Math.floor(step);
       this.movementInterval = setInterval(() => {
         if (!this.animation) return
-        const isVisible = this.animation.move(this.windowWidth, this.windowHeight, movIntervalStep);
+        const isVisible = this.animation.move(this.windowWidth, this.windowHeight, intervalStep);
         if (this.movementInterval && !isVisible) {
           clearInterval(this.movementInterval);
           this.animation = null;
@@ -113,7 +114,7 @@ export default class BackgroundAnimator extends Vue {
             this.animate();
           }, nextTimeout);
         }
-      }, movIntervalStep);
+      }, intervalStep);
     }, 100);
   }
 
