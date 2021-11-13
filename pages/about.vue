@@ -91,7 +91,7 @@ export default class AboutPage extends Vue {
     if (this.selectedTab === 0) {
       return 'https://www.youtube.com/watch?v=C_e-XtC1dDI';
     }
-    return 'https://github.com/arthursb2016/house-of-angels';    
+    return 'https://github.com/arthursb2016/celestial-oracle';    
   }
   get footerText() {
     if (this.selectedTab === 0) {

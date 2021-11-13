@@ -1,15 +1,11 @@
-# House of Angels
+# Celestial Oracle
 
-How about taking 1 minute to meet an Angel?
+How about taking 1 minute from your day to meet an Angel?
 
-Check out: https://houseofangels.netlify.app/
+Check it out: https://celestialoracle.net
 
 I bet you will feel inspired.
 
-Website built with NuxtJs
+Website built with NuxtJs and TypeScript
 
-> TO-DO list:
->
-> * Multi languages (i18n)
-> * Add more content
-> * Apply typescript
+

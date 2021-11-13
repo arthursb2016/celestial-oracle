@@ -9,7 +9,7 @@ export const greetings = [
     } else {
       dynamicText = 'I have a feeling that today is going to be a great day';
     }
-    return `Welcome to the House of Angels. ${dynamicText}! Now, let me ask you something: have you ever met an Angel before?`;
+    return `Welcome to the Celestial Oracle. ${dynamicText}! Now, let me ask you something: have you ever met an Angel before?`;
   },
 
   () => {
@@ -17,7 +17,7 @@ export const greetings = [
     const isMorning = currHour >= 5 && currHour < 12;
     const isAfternoon = currHour >= 12 && currHour < 18;
     const dynamicText = `Good ${isMorning ? 'morning' : isAfternoon ? 'afternoon' : 'night'}`;
-    return `${dynamicText} my friend! Welcome to the House of Angels, a place full of peace and love. Would you like to meet an actual Angel today?`;
+    return `${dynamicText} my friend! Welcome to the Celestial Oracle, a place full of peace and love. Would you like to meet an actual Angel today?`;
   },
 
   () => {
