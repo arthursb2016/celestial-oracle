@@ -85,15 +85,22 @@ export default class BackgroundAnimator extends Vue {
     return styles;
   }
 
-  public animate() {
+  public animate(lastAnimated?: string) {
     if (!this.animations.length) return;
 
     if (this.movementInterval) {
       clearInterval(this.movementInterval);
     }
 
-    const aIndex = Math.floor(Math.random() * this.animations.length);
-    this.animation = new Animation(this.animations[aIndex], this.windowWidth, this.windowHeight);
+    const animations = this.animations.filter((a) => {
+      if (!this.persist && lastAnimated) {
+        return a.name !== lastAnimated;
+      }
+      return true;
+    });
+
+    const aIndex = Math.floor(Math.random() * animations.length);
+    this.animation = new Animation(animations[aIndex], this.windowWidth, this.windowHeight);
 
     if (!this.animation) return;
 
@@ -106,6 +113,7 @@ export default class BackgroundAnimator extends Vue {
         if (!this.animation) return
         const isVisible = this.animation.move(this.windowWidth, this.windowHeight, intervalStep);
         if (this.movementInterval && !isVisible) {
+          const { name } = this.animation;
           clearInterval(this.movementInterval);
           this.animation = null;
           this.containerOpacity = 0;
@@ -113,7 +121,7 @@ export default class BackgroundAnimator extends Vue {
           const maxToNext = !!this.persist ? 2000 : 3500;
           const nextTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
           setTimeout(() => {
-            this.animate();
+            this.animate(name);
           }, nextTimeout);
         }
       }, intervalStep);
