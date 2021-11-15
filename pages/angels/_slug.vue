@@ -37,7 +37,15 @@
         </div>
         <page-footer
           :show="showFooter"
-        />
+        >
+          <div class="share-container">
+            Share:
+            <v-img
+              :src="require('~/assets/icons/whatsapp.svg?inline')"
+              @click="onShare('whatsapp')"
+            />
+          </div>
+        </page-footer>
       </div>
     </div>
   </page-container>
@@ -51,6 +59,8 @@ import { Angel } from '~/models/angel';
 
 import PageContainer from '~/components/PageContainer.vue';
 import PageFooter from '~/components/PageFooter.vue';
+
+type shareMethod = 'whatsapp';
 
 @Component({
   components: {
@@ -83,6 +93,7 @@ export default class SlugPage extends Vue {
       ],
     };
   }
+
   mounted() {
     const angel = angelsStore.getAngel(this.slug);
     if (!angel) {
@@ -97,6 +108,12 @@ export default class SlugPage extends Vue {
           this.showFooter = true;
       }, animationDelays.footer);
     }, animationDelays.pageMounted);
+  }
+
+  public onShare(method: shareMethod) {
+    if (method === 'whatsapp') {
+      console.log('i share');
+    }
   }
 };
 </script>
@@ -150,6 +167,22 @@ export default class SlugPage extends Vue {
 .link {
   color: $text-grey;
   text-decoration: none;
+}
+
+.share-container {
+  padding: 0.3em 0.6rem;
+  border-radius: 0.4rem;
+  background: rgba(0, 0, 0, 0.54);
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ::v-deep .v-image {
+    width: 2.2rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
 }
 
 @media (orientation: portrait) {
