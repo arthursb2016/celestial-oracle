@@ -113,9 +113,10 @@ export default class SlugPage extends Vue {
   public onShare(method: shareMethod) {
     const origin = window.location.origin;
     const slug = btoa(this.angel.slug);
-    const p1 = 'I met an actual Angel today and wanted to share a very special message with you.';
-    const p2 = 'Access the following link to see it';
-    const message = `Hey there! ${p1}. ${p2}: ${origin}?s=${slug}`;
+    const m1 = 'Hey there';
+    const m2 = 'I met an actual Angel today and wanted to share a very special message with you.';
+    const m3 = 'Access the following link to see it';
+    const message = `${m1}! ${m2}. ${m3}: ${origin}?s=${slug}`;
     if (method === 'whatsapp') {
       window.open(`https://wa.me?text=${encodeURIComponent(message)}`, '_blank');
     }
