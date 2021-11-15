@@ -183,6 +183,7 @@ export default class SlugPage extends Vue {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.8;
 
   ::v-deep .v-image {
     width: 2.2rem;
