@@ -128,7 +128,12 @@ export default class IndexPage extends Vue {
   }
   public onClick() {
     const index = Math.floor(Math.random() * this.angels.length);
-    const angel = this.angels[index];
+    let angel = this.angels[index];
+    const shared = location.search.split('s=')[1];
+    if (shared) {
+      const slug = atob(decodeURIComponent(shared));
+      angel = this.angels.find(a => a.slug === slug) || angel;
+    }
     this.$router.push(`/angels/${angel.slug}`);
   }
 };
