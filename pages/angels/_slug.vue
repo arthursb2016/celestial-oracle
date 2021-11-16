@@ -195,9 +195,14 @@ export default class SlugPage extends Vue {
 @media (orientation: portrait) {
   .body {
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     .image-column {
       align-items: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+
       .angel-image {
         max-width: 14rem;
       }
@@ -206,12 +211,18 @@ export default class SlugPage extends Vue {
     .content-column {
       padding-left: 0rem;
       padding-top: 1rem;
-      max-height: 60%;
 
       .content {
+        max-height: none;
+
         .angel-description, .angel-phrase {
           text-align: justify;
           font-size: 2.1rem;
+          overflow: hidden;
+        }
+
+        .angel-phrase {
+          margin-bottom: 2rem;
         }
       }
     }

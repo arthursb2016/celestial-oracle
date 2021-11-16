@@ -213,26 +213,26 @@ export default class IndexPage extends Vue {
   .home {
     .header {
       .angel {
-        width: 28rem;
+        width: 26rem;
       }
 
       .stars {
-        top: 0rem;
+        top: 2rem;
 
         &.fade {
-          top: -5rem;
+          top: -8rem;
         }
       }
 
       .about-link {
         ::v-deep .v-icon {
-          font-size: 4.8rem;
+          font-size: 4.5rem;
         }
       }
     }
     .footer {
       ::v-deep .v-btn {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
         padding: 2.5rem 2rem;
       }
     }

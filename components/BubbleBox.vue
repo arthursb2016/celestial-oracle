@@ -78,7 +78,7 @@ export default class BubbleBox extends Vue {
 
 @media (orientation: portrait) {
   #bubble {
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin-top: -2.9rem;
   }
 }
