@@ -1,0 +1,82 @@
+{
+  "name": "black-rocket",
+  "sizes": ["xsmall", "small"],
+  "duration": {
+    "min": 8,
+    "max": 12
+  },
+  "opacity": {
+    "min": 3,
+    "max": 4
+  },
+  "movements": [
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(260deg)",
+      "start": {
+        "top": 0,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": {
+          "min": 70,
+          "max": 90
+        }
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(260deg)",
+      "start": {
+        "top": 4,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": {
+          "min": 70,
+          "max": 90
+        }
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(100deg)",
+      "start": {
+        "top": 0,
+        "right": null,
+        "bottom": null,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": {
+          "min": 70,
+          "max": 90
+        }
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(100deg)",
+      "start": {
+        "top": 6,
+        "right": null,
+        "bottom": null,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": {
+          "min": 70,
+          "max": 90
+        }
+      }
+    }
+  ]
+}
