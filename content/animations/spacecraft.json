@@ -1,0 +1,42 @@
+{
+  "name": "spacecraft",
+  "sizes": ["medium", "large"],
+  "duration": {
+    "min": 6,
+    "max": 8
+  },
+  "opacity": {
+    "min": 4,
+    "max": 6
+  },
+  "movements": [
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(230deg)",
+      "start": {
+        "top": 0,
+        "right": 0,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "behindClouds",
+      "transform": "rotate(130deg)",
+      "start": {
+        "top": 2,
+        "right": null,
+        "bottom": null,
+        "left": 0
+      },
+      "distance": {
+        "horizontal": 100,
+        "vertical": 100
+      }
+    }
+  ]
+}
