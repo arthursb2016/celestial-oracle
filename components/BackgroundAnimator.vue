@@ -31,7 +31,7 @@ import {
   Position,
   PositionName,
 } from '~/types/animation';
-import { frequency } from '~/type/frequency';
+import { frequency } from '~/types/frequency';
 
 type componentType = 'persistent' | 'random';
 
@@ -52,7 +52,7 @@ export default class BackgroundAnimator extends Vue {
   private windowHeight: number = 0;
 
   private animation: Animation | null = null;
-  private frequencyRange: FrequencyRange;
+  private frequencyRange!: FrequencyRange;
 
   private containerZIndex: number = 0;
   private containerOpacity: number = 0;
