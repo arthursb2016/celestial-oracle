@@ -111,6 +111,7 @@ export default class IndexPage extends Vue {
     const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
     if (!lottieAngelPlayer) return;
     lottieAngelPlayer.addEventListener('complete', () => {
+      if (this.pageStep !== 0) return;
       this.loadPageNextStep();
       setTimeout(() => {
         this.$nuxt.$emit('activate-background-animation', this.animationData);
