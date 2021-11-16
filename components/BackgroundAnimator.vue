@@ -161,7 +161,9 @@ export default class BackgroundAnimator extends Vue {
 
     const onVisibilitChange = () => {
       if (document.visibilityState === 'visible') {
-        this.animate();
+        setTimeout(() => {
+          this.animate();
+        }, 1500);
       } else {
         this.unanimate();
       }
