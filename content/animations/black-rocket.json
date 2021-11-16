@@ -1,9 +1,9 @@
 {
   "name": "black-rocket",
-  "sizes": ["xsmall", "small"],
+  "sizes": ["xsmall"],
   "duration": {
-    "min": 8,
-    "max": 12
+    "min": 7,
+    "max": 9
   },
   "opacity": {
     "min": 3,
@@ -12,7 +12,7 @@
   "movements": [
     {
       "depth": "behindClouds",
-      "transform": "rotate(260deg)",
+      "transform": "rotate(250deg)",
       "start": {
         "top": 0,
         "right": 0,
@@ -29,7 +29,7 @@
     },
     {
       "depth": "behindClouds",
-      "transform": "rotate(260deg)",
+      "transform": "rotate(250deg)",
       "start": {
         "top": 4,
         "right": 0,
@@ -46,7 +46,7 @@
     },
     {
       "depth": "behindClouds",
-      "transform": "rotate(100deg)",
+      "transform": "rotate(110deg)",
       "start": {
         "top": 0,
         "right": null,
@@ -63,7 +63,7 @@
     },
     {
       "depth": "behindClouds",
-      "transform": "rotate(100deg)",
+      "transform": "rotate(110deg)",
       "start": {
         "top": 6,
         "right": null,
