@@ -89,7 +89,7 @@ export default class BackgroundAnimator extends Vue {
     if (!this.animations.length) return;
 
     if (this.movementInterval) {
-      clearInterval(this.movementInterval);
+      this.unanimate();
     }
 
     const animations = this.animations.filter((a) => {
@@ -114,9 +114,7 @@ export default class BackgroundAnimator extends Vue {
         const isVisible = this.animation.move(this.windowWidth, this.windowHeight, intervalStep);
         if (this.movementInterval && !isVisible) {
           const { name } = this.animation;
-          clearInterval(this.movementInterval);
-          this.animation = null;
-          this.containerOpacity = 0;
+          this.unanimate();
           const minToNext = !!this.persist ? 1000 : 2000;
           const maxToNext = !!this.persist ? 2000 : 3500;
           const nextTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
@@ -126,6 +124,13 @@ export default class BackgroundAnimator extends Vue {
         }
       }, intervalStep);
     }, 100);
+  }
+
+  public unanimate() {
+    if (!this.movementInterval) return;
+    clearInterval(this.movementInterval);
+    this.animation = null;
+    this.containerOpacity = 0;
   }
 
   mounted() {
@@ -153,6 +158,16 @@ export default class BackgroundAnimator extends Vue {
       });
       this.animate();
     });
+
+    const onVisibilitChange = () => {
+      if (document.visibilityState === 'visible') {
+        this.animate();
+      } else {
+        this.unanimate();
+      }
+    };
+
+    window.addEventListener('visibilitychange', onVisibilitChange);
   }
 }
 </script>
