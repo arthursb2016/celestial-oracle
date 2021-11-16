@@ -114,7 +114,7 @@ export default class SlugPage extends Vue {
     const origin = window.location.origin;
     const slug = btoa(this.angel.slug);
     const m1 = 'Hey there';
-    const m2 = 'I met an actual Angel today and wanted to share a very special message with you';
+    const m2 = 'I met an actual Angel today and wanted to share a very special message from it with you';
     const m3 = 'Access the following link to see it';
     const message = `${m1}! ${m2}. ${m3}: ${origin}?s=${slug}`;
     if (method === 'whatsapp') {
