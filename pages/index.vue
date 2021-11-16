@@ -118,7 +118,10 @@ export default class IndexPage extends Vue {
         this.$nuxt.$emit('activate-shootingStarAnimator');
         setTimeout(() => {
           this.$nuxt.$emit('activate-randomAnimator1');
-        }, animationDelays.animator * 2);
+        }, animationDelays.animator * 3);
+        setTimeout(() => {
+          this.$nuxt.$emit('activate-randomAnimator2');
+        }, animationDelays.animator * 6);
       }, animationDelays.animator);
     });
   }

@@ -10,11 +10,18 @@
       <background-animator
         id="randomAnimator1"
         type="random"
+        frequency="medium"
+      />
+      <background-animator
+        id="randomAnimator2"
+        type="random"
+        frequency="low"
       />
       <background-animator
         id="shootingStarAnimator"
         type="persistent"
         name="shooting-star"
+        frequency="high"
       />
       <div
         class="app-background-image"

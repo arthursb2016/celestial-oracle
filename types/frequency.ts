@@ -1,0 +1,1 @@
+export type frequency = 'low' | 'medium' | 'high';

@@ -23,13 +23,15 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
+import { Animation } from '~/models/animation';
+import { FrequencyRange } from '~/models/frequency';
 import {
   IAnimation,
   Movement,
   Position,
   PositionName,
 } from '~/types/animation';
-import { Animation } from '~/models/animation';
+import { frequency } from '~/type/frequency';
 
 type componentType = 'persistent' | 'random';
 
@@ -41,12 +43,16 @@ export default class BackgroundAnimator extends Vue {
   @Prop({ default: '' })
   name?: string;
 
+  @Prop({ default: 'medium' })
+  frequency!: frequency;
+
   private movementInterval: ReturnType<typeof setInterval> | null = null;
 
   private windowWidth: number = 0;
   private windowHeight: number = 0;
 
   private animation: Animation | null = null;
+  private frequencyRange: FrequencyRange;
 
   private containerZIndex: number = 0;
   private containerOpacity: number = 0;
@@ -132,12 +138,9 @@ export default class BackgroundAnimator extends Vue {
         if (this.movementInterval && !isVisible) {
           const { name } = this.animation;
           this.unanimate();
-          const minToNext = this.isPersistent ? 1000 : 2000;
-          const maxToNext = this.isPersistent ? 2000 : 3500;
-          const nextTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
           setTimeout(() => {
             this.animate(name);
-          }, nextTimeout);
+          }, this.frequencyRange.getValue());
         }
       }, intervalStep);
     }, 100);
@@ -151,6 +154,8 @@ export default class BackgroundAnimator extends Vue {
   }
 
   mounted() {
+    this.frequencyRange = new FrequencyRange(this.frequency);
+
     const updateWindowDimensions = () => {
       this.windowWidth = window.innerWidth
         || document.documentElement.clientWidth
@@ -171,7 +176,7 @@ export default class BackgroundAnimator extends Vue {
       if (document.visibilityState === 'visible') {
         setTimeout(() => {
           this.animate();
-        }, 1500);
+        }, this.frequencyRange.getValue());
       } else {
         this.unanimate();
       }
