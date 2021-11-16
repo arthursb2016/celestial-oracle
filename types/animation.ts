@@ -1,9 +1,6 @@
-export type animationSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+import { Range } from './range';
 
-export interface Range {
-  min: number;
-  max: number;
-}
+export type animationSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
 
 export type movementDepth = 'behindClouds' : 'aheadClouds';
 
