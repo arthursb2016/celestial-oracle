@@ -31,17 +31,21 @@ import {
 } from '~/types/animation';
 import { Animation } from '~/models/animation';
 
+type componentType = 'persistent' | 'random';
+
 @Component({})
 export default class BackgroundAnimator extends Vue {
+  @Prop({ required: true })
+  type!: componentType;
+
   @Prop({ default: '' })
-  persist?: string | string[];
+  name?: string;
 
   private movementInterval: ReturnType<typeof setInterval> | null = null;
 
   private windowWidth: number = 0;
   private windowHeight: number = 0;
 
-  private animations: IAnimation[] = [];
   private animation: Animation | null = null;
 
   private containerZIndex: number = 0;
@@ -49,6 +53,16 @@ export default class BackgroundAnimator extends Vue {
 
   private movStep: number = 120;
 
+  get isPersistent(): boolean {
+    return !!(this.type === 'persistent' && this.name);
+  }
+
+  get animationData(): IAnimation | IAnimation[] {
+    if (this.isPersistent) {
+      return this.$store.getters['animations/getAnimation'](this.name) as IAnimation;
+    }
+    return this.$store.getters['animations/animations'];
+  }
 
   get containerStyles() {
     const styles = {
@@ -86,23 +100,26 @@ export default class BackgroundAnimator extends Vue {
   }
 
   public animate(lastAnimated?: string) {
-    if (!this.animations.length) return;
+    const hasPersistentAnimation = this.isPersistent && this.animationData;
+    const hasAnimationArray = !this.isPersistent && (this.animationData as IAnimation[]).length;
+
+    if (!hasPersistentAnimation && !hasAnimationArray) return;
 
     if (this.movementInterval) {
       this.unanimate();
     }
 
-    const animations = this.animations.filter((a) => {
-      if (!this.persist && lastAnimated) {
-        return a.name !== lastAnimated;
-      }
-      return true;
-    });
+    let nextAnimation: IAnimation;
 
-    const aIndex = Math.floor(Math.random() * animations.length);
-    this.animation = new Animation(animations[aIndex], this.windowWidth, this.windowHeight);
+    if (this.isPersistent) {
+      nextAnimation = this.animationData as IAnimation;
+    } else {
+      const animations: IAnimation[] = this.animationData as IAnimation[];
+      const aIndex = Math.floor(Math.random() * animations.length);
+      nextAnimation = animations[aIndex];
+    }
 
-    if (!this.animation) return;
+    this.animation = new Animation(nextAnimation, this.windowWidth, this.windowHeight);
 
     setTimeout(() => {
       this.containerOpacity = 1;
@@ -115,8 +132,8 @@ export default class BackgroundAnimator extends Vue {
         if (this.movementInterval && !isVisible) {
           const { name } = this.animation;
           this.unanimate();
-          const minToNext = !!this.persist ? 1000 : 2000;
-          const maxToNext = !!this.persist ? 2000 : 3500;
+          const minToNext = this.isPersistent ? 1000 : 2000;
+          const maxToNext = this.isPersistent ? 2000 : 3500;
           const nextTimeout = Math.floor(Math.random() * (maxToNext - minToNext + 1) + minToNext);
           setTimeout(() => {
             this.animate(name);
@@ -148,16 +165,7 @@ export default class BackgroundAnimator extends Vue {
 
     updateWindowDimensions();
 
-    this.$nuxt.$on('activate-background-animation', (animationData: IAnimation[]) => {
-      if (this.movementInterval) return;
-      this.animations = [...animationData].filter((i) => {
-        if (this.persist) {
-          return i.name === this.persist;
-        }
-        return true;
-      });
-      this.animate();
-    });
+    this.$nuxt.$on(`activate-${this.$attrs.id}`, () => this.animate());
 
     const onVisibilitChange = () => {
       if (document.visibilityState === 'visible') {

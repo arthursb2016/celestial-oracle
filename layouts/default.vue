@@ -7,8 +7,15 @@
         'night': isNight,
       }"
     >
-      <background-animator />
-      <background-animator persist="shooting-star" />
+      <background-animator
+        id="randomAnimator1"
+        type="random"
+      />
+      <background-animator
+        id="shootingStarAnimator"
+        type="persistent"
+        name="shooting-star"
+      />
       <div
         class="app-background-image"
         :class="{

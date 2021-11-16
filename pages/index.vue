@@ -107,6 +107,7 @@ export default class IndexPage extends Vue {
     });
   }
   mounted() {
+    this.$store.commit('animations/setAnimations', this.animationData);
     this.$store.commit('angels/setAngels', this.angelData);
     const lottieAngelPlayer = document.getElementById('lottieAngelPlayer');
     if (!lottieAngelPlayer) return;
@@ -114,8 +115,11 @@ export default class IndexPage extends Vue {
       if (this.pageStep !== 0) return;
       this.loadPageNextStep();
       setTimeout(() => {
-        this.$nuxt.$emit('activate-background-animation', this.animationData);
-      }, animationDelays.background);
+        this.$nuxt.$emit('activate-shootingStarAnimator');
+        setTimeout(() => {
+          this.$nuxt.$emit('activate-randomAnimator1');
+        }, animationDelays.animator * 2);
+      }, animationDelays.animator);
     });
   }
 
