@@ -71,14 +71,13 @@ export default class BackgroundAnimator extends Vue {
   }
 
   get containerStyles() {
+    const appBgImg = document.querySelector('.app-background-image');
     const styles = {
       'opacity': this.containerOpacity,
     };
-    if (!this.animation) {
+    if (!this.animation || !appBgImg) {
       return styles;
     }
-    const appBgImg = document.querySelector('.app-background-image');
-    if (!appBgImg) return {};
     const zIndex = window.getComputedStyle(appBgImg).getPropertyValue('z-index');
     const movement: Movement = this.animation.movement;
     const value = movement.depth === 'behindClouds' ? -1 : 1;
