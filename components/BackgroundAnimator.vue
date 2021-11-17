@@ -213,16 +213,11 @@ export default class BackgroundAnimator extends Vue {
     }
 
     &.large {
-      width: 11.6rem;
-      height: 11.6rem;
-    }
-
-    &.xlarge {
       width: 15rem;
       height: 15rem;
     }
 
-    &.xxlarge {
+    &.xlarge {
       width: 18rem;
       height: 18rem;
     }

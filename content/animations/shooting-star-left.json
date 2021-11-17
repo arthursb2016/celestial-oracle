@@ -1,7 +1,7 @@
 {
   "name": "shooting-star-left",
   "file": "shooting-star",
-  "sizes": ["xlarge", "xxlarge"],
+  "sizes": ["large", "xlarge"],
   "duration": {
     "min": 8,
     "max": 10

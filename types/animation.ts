@@ -1,6 +1,6 @@
 import { Range } from './range';
 
-export type animationSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+export type animationSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 
 export type movementDepth = 'behindClouds' : 'aheadClouds';
 
