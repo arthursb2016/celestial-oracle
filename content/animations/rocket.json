@@ -1,6 +1,6 @@
 {
   "name": "rocket",
-  "sizes": ["small", "medium", "large"],
+  "sizes": ["small", "medium"],
   "duration": {
     "min": 8,
     "max": 12

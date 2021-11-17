@@ -14,7 +14,7 @@ import { typewriter } from '../lib/functions/typewritter';
 import { greetings, speeches } from '../lib/speeches';
 import { animationDelays } from '../lib/delays';
 
-const TYPEWRITER_SPEED_MS = 80;
+const TYPEWRITER_SPEED_MS = 95;
 
 @Component({})
 export default class BubbleBox extends Vue {

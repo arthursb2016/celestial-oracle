@@ -1,8 +1,8 @@
 {
   "name": "spacebus",
-  "sizes": ["small", "medium", "large"],
+  "sizes": ["small", "medium"],
   "duration": {
-    "min": 9,
+    "min": 10,
     "max": 13
   },
   "opacity": {

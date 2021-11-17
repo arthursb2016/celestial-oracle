@@ -46,7 +46,7 @@ export default class BackgroundAnimator extends Vue {
   @Prop({ default: 'medium' })
   frequency!: frequency;
 
-  @Prop({ default: [] })
+  @Prop({ default: () => [] })
   exclude!: string[];
 
   private movementInterval: ReturnType<typeof setInterval> | null = null;
@@ -200,8 +200,8 @@ export default class BackgroundAnimator extends Vue {
     position: absolute;
 
     &.xsmall {
-      width: 7.5rem;
-      height: 7.5rem
+      width: 7.25rem;
+      height: 7.25rem
     }
 
     &.small {

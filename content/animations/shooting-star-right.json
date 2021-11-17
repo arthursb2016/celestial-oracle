@@ -16,6 +16,20 @@
       "transform": "rotate(55deg)",
       "start": {
         "top": 0,
+        "right": 1,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": null,
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "rotate(55deg)",
+      "start": {
+        "top": 0,
         "right": 3,
         "bottom": null,
         "left": null
@@ -30,7 +44,7 @@
       "transform": "rotate(55deg)",
       "start": {
         "top": 0,
-        "right": 8,
+        "right": 5,
         "bottom": null,
         "left": null
       },
@@ -44,7 +58,7 @@
       "transform": "rotate(55deg)",
       "start": {
         "top": 0,
-        "right": 10,
+        "right": 7,
         "bottom": null,
         "left": null
       },
@@ -58,21 +72,7 @@
       "transform": "rotate(55deg)",
       "start": {
         "top": 0,
-        "right": 15,
-        "bottom": null,
-        "left": null
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": 20,
+        "right": 9,
         "bottom": null,
         "left": null
       },

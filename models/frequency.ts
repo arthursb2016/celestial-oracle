@@ -7,10 +7,10 @@ export class FrequencyRange {
 
   private low: Range = {
     min: 8000,
-    max: 15000,
+    max: 16000,
   }
   private medium: Range = {
-    min: 3000,
+    min: 4000,
     max: 8000,
   }
 

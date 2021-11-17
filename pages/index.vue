@@ -118,7 +118,7 @@ export default class IndexPage extends Vue {
         this.$nuxt.$emit('activate-single-animator');
         setTimeout(() => {
           this.$nuxt.$emit('activate-multiple-animator');
-        }, animationDelays.animator * 3);
+        }, animationDelays.animator * 10);
       }, animationDelays.animator);
     });
   }

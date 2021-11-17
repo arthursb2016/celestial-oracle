@@ -1,6 +1,6 @@
 {
   "name": "alienship",
-  "sizes": ["xsmall", "small"],
+  "sizes": ["xsmall"],
   "duration": {
     "min": 8,
     "max": 11
@@ -28,7 +28,7 @@
       "depth": "aheadClouds",
       "transform": "none",
       "start": {
-        "top": 12,
+        "top": 6,
         "right": null,
         "bottom": null,
         "left": 0
@@ -56,7 +56,7 @@
       "depth": "aheadClouds",
       "transform": "none",
       "start": {
-        "top": 18,
+        "top": 8,
         "right": 0,
         "bottom": null,
         "left": null
