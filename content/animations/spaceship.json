@@ -2,8 +2,8 @@
   "name": "spaceship",
   "sizes": ["xsmall"],
   "duration": {
-    "min": 8,
-    "max": 11
+    "min": 10,
+    "max": 12
   },
   "opacity": {
     "min": 5,

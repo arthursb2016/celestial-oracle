@@ -27,6 +27,7 @@ export interface Movement {
 
 export interface IAnimation {
   name: string;
+  file?: string;
   sizes?: animationSize[];
   duration: Range;
   opacity: Range;

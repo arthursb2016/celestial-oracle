@@ -8,6 +8,7 @@ import {
 
 export class Animation {
   public name: string;
+  public file: string;
   public size: animationSize;
   public duration: number;
   public opacity: number;
@@ -16,6 +17,7 @@ export class Animation {
 
   constructor(data: IAnimation, wWidth: number, wHeight: number) {
     this.name = data.name;
+    this.file = data.file || data.name;
 
     const aSizes: animationSize[] = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'].filter((aS: any) => {
       return data.sizes && Array.isArray(data.sizes) ? data.sizes.includes(aS) : true;

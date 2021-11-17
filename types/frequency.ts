@@ -1,1 +1,1 @@
-export type frequency = 'low' | 'medium' | 'high';
+export type frequency = 'low' | 'medium';

@@ -116,12 +116,9 @@ export default class IndexPage extends Vue {
       this.loadPageNextStep();
       setTimeout(() => {
         this.$nuxt.$emit('activate-single-animator');
-        /*setTimeout(() => {
-          this.$nuxt.$emit('activate-randomAnimator1');
-        }, animationDelays.animator * 3);
         setTimeout(() => {
-          this.$nuxt.$emit('activate-randomAnimator2');
-        }, animationDelays.animator * 6);*/
+          this.$nuxt.$emit('activate-multiple-animator');
+        }, animationDelays.animator * 3);
       }, animationDelays.animator);
     });
   }

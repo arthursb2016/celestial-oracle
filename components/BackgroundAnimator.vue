@@ -5,7 +5,7 @@
   >
     <lottie-player
       v-if="animation"
-      :src="`/animations/${animation.name}.json`"
+      :src="`/animations/${animation.file}.json`"
       mode="bounce"
       background="transparent"
       speed="1"
@@ -45,6 +45,9 @@ export default class BackgroundAnimator extends Vue {
 
   @Prop({ default: 'medium' })
   frequency!: frequency;
+
+  @Prop({ default: [] })
+  exclude!: string[];
 
   private movementInterval: ReturnType<typeof setInterval> | null = null;
 
@@ -119,7 +122,9 @@ export default class BackgroundAnimator extends Vue {
     if (this.isSingle) {
       nextAnimation = this.animationData as IAnimation;
     } else {
-      const animations: IAnimation[] = this.animationData as IAnimation[];
+      const animations: IAnimation[] = (this.animationData as IAnimation[]).filter((a) => {
+        return (!lastAnimated || a.name !== lastAnimated) && !this.exclude.includes(a.name);
+      });
       const aIndex = Math.floor(Math.random() * animations.length);
       nextAnimation = animations[aIndex];
     }

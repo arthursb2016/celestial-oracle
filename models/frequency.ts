@@ -13,10 +13,6 @@ export class FrequencyRange {
     min: 3000,
     max: 8000,
   }
-  private high: Range = {
-    min: 1000,
-    max: 2000,
-  }
 
   constructor(type: frequency) {
     this.type = type;

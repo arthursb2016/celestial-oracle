@@ -3,7 +3,7 @@
   "sizes": ["small", "medium", "large"],
   "duration": {
     "min": 9,
-    "max": 14
+    "max": 13
   },
   "opacity": {
     "min": 3,

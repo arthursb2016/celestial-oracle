@@ -1,5 +1,6 @@
 {
-  "name": "shooting-star",
+  "name": "shooting-star-left",
+  "file": "shooting-star",
   "sizes": ["xlarge", "xxlarge"],
   "duration": {
     "min": 8,
@@ -74,76 +75,6 @@
         "right": null,
         "bottom": null,
         "left": 21
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": 3,
-        "bottom": null,
-        "left": null
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": 8,
-        "bottom": null,
-        "left": null
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": 10,
-        "bottom": null,
-        "left": null
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": 15,
-        "bottom": null,
-        "left": null
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": 20,
-        "bottom": null,
-        "left": null
       },
       "distance": {
         "horizontal": null,
