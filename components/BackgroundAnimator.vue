@@ -134,6 +134,8 @@ export default class BackgroundAnimator extends Vue {
     setTimeout(() => {
       this.containerOpacity = 1;
 
+      if (!this.animation) return;
+
       const step = (this.animation!.duration * 1000) / this.movStep;
       const intervalStep: number = Math.floor(step);
       this.movementInterval = setInterval(() => {
