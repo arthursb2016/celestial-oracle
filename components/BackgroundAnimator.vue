@@ -33,7 +33,7 @@ import {
 } from '~/types/animation';
 import { frequency } from '~/types/frequency';
 
-type componentType = 'persistent' | 'random';
+type componentType = 'single' | 'multiple';
 
 @Component({})
 export default class BackgroundAnimator extends Vue {
@@ -59,12 +59,12 @@ export default class BackgroundAnimator extends Vue {
 
   private movStep: number = 120;
 
-  get isPersistent(): boolean {
-    return !!(this.type === 'persistent' && this.name);
+  get isSingle(): boolean {
+    return !!(this.type === 'single' && this.name);
   }
 
   get animationData(): IAnimation | IAnimation[] {
-    if (this.isPersistent) {
+    if (this.isSingle) {
       return this.$store.getters['animations/getAnimation'](this.name) as IAnimation;
     }
     return this.$store.getters['animations/animations'];
@@ -106,8 +106,8 @@ export default class BackgroundAnimator extends Vue {
   }
 
   public animate(lastAnimated?: string) {
-    const hasPersistentAnimation = this.isPersistent && this.animationData;
-    const hasAnimationArray = !this.isPersistent && (this.animationData as IAnimation[]).length;
+    const hasPersistentAnimation = this.isSingle && this.animationData;
+    const hasAnimationArray = !this.isSingle && (this.animationData as IAnimation[]).length;
 
     if (!hasPersistentAnimation && !hasAnimationArray) return;
 
@@ -117,7 +117,7 @@ export default class BackgroundAnimator extends Vue {
 
     let nextAnimation: IAnimation;
 
-    if (this.isPersistent) {
+    if (this.isSingle) {
       nextAnimation = this.animationData as IAnimation;
     } else {
       const animations: IAnimation[] = this.animationData as IAnimation[];

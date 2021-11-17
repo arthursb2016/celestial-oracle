@@ -7,22 +7,7 @@
         'night': isNight,
       }"
     >
-      <background-animator
-        id="randomAnimator1"
-        type="random"
-        frequency="medium"
-      />
-      <background-animator
-        id="randomAnimator2"
-        type="random"
-        frequency="low"
-      />
-      <background-animator
-        id="shootingStarAnimator"
-        type="persistent"
-        name="shooting-star"
-        frequency="high"
-      />
+      <background-animator-controller />
       <div
         class="app-background-image"
         :class="{
@@ -40,11 +25,11 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import { getCurrentHour } from '~/lib/functions/datetime';
 
-import BackgroundAnimator from '~/components/BackgroundAnimator.vue';
+import BackgroundAnimatorController from '~/components/BackgroundAnimatorController.vue';
 
 @Component({
   components: {
-    BackgroundAnimator,
+    BackgroundAnimatorController,
   },
 })
 export default class DefaultLayout extends Vue {
