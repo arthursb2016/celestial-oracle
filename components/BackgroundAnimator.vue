@@ -164,12 +164,8 @@ export default class BackgroundAnimator extends Vue {
         || document.documentElement.clientHeight
         || document.body.clientHeight;
     };
-
     window.addEventListener('resize', updateWindowDimensions);
-
     updateWindowDimensions();
-
-    this.$nuxt.$on(`activate-${this.$attrs.id}`, () => this.animate());
 
     const onVisibilitChange = () => {
       if (document.visibilityState === 'visible') {
@@ -180,8 +176,11 @@ export default class BackgroundAnimator extends Vue {
         this.unanimate();
       }
     };
-
     window.addEventListener('visibilitychange', onVisibilitChange);
+
+    setTimeout(() => {
+      this.animate()
+    }, this.frequencyRange.getValue());
   }
 }
 </script>
