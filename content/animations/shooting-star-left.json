@@ -18,7 +18,35 @@
         "top": 0,
         "right": null,
         "bottom": null,
+        "left": 1
+      },
+      "distance": {
+        "horizontal": null,
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "rotate(55deg)",
+      "start": {
+        "top": 0,
+        "right": null,
+        "bottom": null,
         "left": 2
+      },
+      "distance": {
+        "horizontal": null,
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "rotate(55deg)",
+      "start": {
+        "top": 0,
+        "right": null,
+        "bottom": null,
+        "left": 3
       },
       "distance": {
         "horizontal": null,
@@ -46,35 +74,7 @@
         "top": 0,
         "right": null,
         "bottom": null,
-        "left": 6
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": null,
-        "bottom": null,
-        "left": 8
-      },
-      "distance": {
-        "horizontal": null,
-        "vertical": 100
-      }
-    },
-    {
-      "depth": "aheadClouds",
-      "transform": "rotate(55deg)",
-      "start": {
-        "top": 0,
-        "right": null,
-        "bottom": null,
-        "left": 10
+        "left": 5
       },
       "distance": {
         "horizontal": null,
