@@ -26,14 +26,14 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import BackgroundAnimator from './BackgroundAnimator.vue';
+import BackgroundAnimator from './subcomponents/BackgroundAnimator.vue';
 
 @Component({
   components: {
     BackgroundAnimator,
   },
 })
-export default class BackgroundAnimatorController extends Vue {
+export default class BackgroundAnimatorContainer extends Vue {
   private singleAnimations: boolean = false;
   private multipleAnimations: boolean = false;
 

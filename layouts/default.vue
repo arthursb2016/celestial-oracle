@@ -7,7 +7,7 @@
         'night': isNight,
       }"
     >
-      <background-animator-controller />
+      <background-animator-container />
       <div
         class="app-background-image"
         :class="{
@@ -25,11 +25,11 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import { getCurrentHour } from '~/lib/functions/datetime';
 
-import BackgroundAnimatorController from '~/components/BackgroundAnimatorController.vue';
+import BackgroundAnimatorContainer from '~/components/BackgroundAnimatorContainer.vue';
 
 @Component({
   components: {
-    BackgroundAnimatorController,
+    BackgroundAnimatorContainer,
   },
 })
 export default class DefaultLayout extends Vue {
