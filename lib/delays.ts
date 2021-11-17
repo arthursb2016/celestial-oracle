@@ -3,5 +3,6 @@ export const animationDelays: any = {
   fast: 200,
   slow: 600,
   footer: 2800,
-  multipleAnimator: 5000,
+  singleAnimator: 800,
+  multipleAnimator: 8500,
 };

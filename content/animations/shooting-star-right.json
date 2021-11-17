@@ -80,6 +80,34 @@
         "horizontal": null,
         "vertical": 100
       }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "rotate(55deg)",
+      "start": {
+        "top": 0,
+        "right": 6,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": null,
+        "vertical": 100
+      }
+    },
+    {
+      "depth": "aheadClouds",
+      "transform": "rotate(55deg)",
+      "start": {
+        "top": 0,
+        "right": 7,
+        "bottom": null,
+        "left": null
+      },
+      "distance": {
+        "horizontal": null,
+        "vertical": 100
+      }
     }
   ]
 }

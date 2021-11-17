@@ -124,7 +124,9 @@ export default class IndexPage extends Vue {
   }
   public onSpeechDone() {
     this.loadPageNextStep();
-    this.$nuxt.$emit('activate-single-animator');
+    setTimeout(() => {
+      this.$nuxt.$emit('activate-single-animator');
+    }, animationDelays.singleAnimator);
     setTimeout(() => {
       this.$nuxt.$emit('activate-multiple-animator');
     }, animationDelays.multipleAnimator);

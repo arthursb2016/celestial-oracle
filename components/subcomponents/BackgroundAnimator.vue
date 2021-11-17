@@ -107,7 +107,7 @@ export default class BackgroundAnimator extends Vue {
     return styles;
   }
 
-  public animate(lastAnimated?: string) {
+  public async animate(lastAnimated?: string) {
     const hasPersistentAnimation = this.isSingle && this.animationData;
     const hasAnimationArray = !this.isSingle && (this.animationData as IAnimation[]).length;
 
@@ -115,6 +115,7 @@ export default class BackgroundAnimator extends Vue {
 
     if (this.movementInterval) {
       this.unanimate();
+      await this.$nextTick();
     }
 
     let nextAnimation: IAnimation;
@@ -194,7 +195,7 @@ export default class BackgroundAnimator extends Vue {
   width: 100%;
   height: 100%;
   position: absolute;
-  transition: opacity 1000ms ease-out;
+  transition: opacity 1200ms ease-out;
 
   .animation {
     position: absolute;
