@@ -183,9 +183,7 @@ export default class BackgroundAnimator extends Vue {
     };
     window.addEventListener('visibilitychange', onVisibilitChange);
 
-    setTimeout(() => {
-      this.animate()
-    }, this.frequencyRange.getValue());
+    this.animate();
   }
 }
 </script>

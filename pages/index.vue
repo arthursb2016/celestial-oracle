@@ -114,12 +114,6 @@ export default class IndexPage extends Vue {
     lottieAngelPlayer.addEventListener('complete', () => {
       if (this.pageStep !== 0) return;
       this.loadPageNextStep();
-      setTimeout(() => {
-        this.$nuxt.$emit('activate-single-animator');
-        setTimeout(() => {
-          this.$nuxt.$emit('activate-multiple-animator');
-        }, animationDelays.animator * 10);
-      }, animationDelays.animator);
     });
   }
 
@@ -130,6 +124,10 @@ export default class IndexPage extends Vue {
   }
   public onSpeechDone() {
     this.loadPageNextStep();
+    this.$nuxt.$emit('activate-single-animator');
+    setTimeout(() => {
+      this.$nuxt.$emit('activate-multiple-animator');
+    }, animationDelays.multipleAnimator);
   }
   public onClick() {
     const index = Math.floor(Math.random() * this.angels.length);
