@@ -166,6 +166,9 @@ export default class SlugPage extends Vue {
       .angel-description {
         overflow-y: auto;
       }
+      .angel-phrase {
+        font-style: italic;
+      }
     }
   }
 }
@@ -173,6 +176,7 @@ export default class SlugPage extends Vue {
 .link {
   color: $text-grey;
   text-decoration: none;
+  font-weight: 600;
 }
 
 .share-container {

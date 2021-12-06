@@ -66,7 +66,6 @@ export default class PageContainer extends Vue {
     height: 100%;
     font-size: 1.8rem;
     color: white;
-    font-family: FANTASY;
     letter-spacing: 0.1rem;
     padding-bottom: 1rem;
     opacity: 0;
