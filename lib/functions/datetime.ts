@@ -1,8 +1,8 @@
 import { DateTime as Luxon } from 'luxon';
 
 export function getCurrentHour(): number {
-  const dTime: any = Luxon.now();
-  return dTime.c.hour;
+  const dTime = Luxon.now();
+  return dTime.hour;
 }
 
 export function getCurrentWeekday(): string {
