@@ -6,12 +6,15 @@
     }"
   >
     <slot />
-    <v-icon
-      class="back-icon"
+    <div
+      class="back-container"
       @click="$router.push('/')"
     >
-      keyboard_return
-    </v-icon>
+      BACK
+      <v-icon class="back-icon">
+        keyboard_return
+      </v-icon>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -38,12 +41,17 @@ export default class PageFooter extends Vue {
     bottom: 0rem;
   }
 
-  ::v-deep .v-icon.back-icon {
-    font-size: 2.6rem;
+  .back-container {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.6rem;
     opacity: 0.8;
     position: absolute;
     right: 0;
     bottom: 0;
+    cursor: pointer;
+    ::v-deep .v-icon.back-icon {
+      font-size: 2.4rem;
+    }
   }
 }
 </style>
