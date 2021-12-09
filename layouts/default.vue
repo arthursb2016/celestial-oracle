@@ -48,6 +48,10 @@ html, body {
   overflow: hidden;
 }
 
+.v-application p {
+  margin-bottom: 32px;
+}
+
 .app-container {
   position: relative;
   
