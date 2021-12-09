@@ -13,12 +13,15 @@
         <div>
           Painted by:
         </div>
-        <div>
+        <div class="author-container">
           <a
             :href="angel.img_author_link"
             target="_blank"
             class="link"
           >
+            <v-icon class="mr-1">
+              open_in_new
+            </v-icon>
             {{ angel.img_author }}
           </a>
         </div>
@@ -137,6 +140,13 @@ export default class SlugPage extends Vue {
 };
 </script>
 <style lang="scss" scoped>
+.author-container {
+  ::v-deep .v-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+  }
+}
+
 .body {
   display: flex;
   height: 100%;
