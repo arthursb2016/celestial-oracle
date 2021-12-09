@@ -56,6 +56,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { angelsStore } from '~/store';
 import { animationDelays } from '~/lib/delays';
 import { Angel } from '~/models/angel';
+import { isPortraitScreen } from '~/lib/functions/utils';
 
 import PageContainer from '~/components/PageContainer.vue';
 import PageFooter from '~/components/PageFooter.vue';
@@ -97,17 +98,29 @@ export default class SlugPage extends Vue {
   mounted() {
     const angel = angelsStore.getAngel(this.slug);
     if (!angel) {
-      console.error('Angel not found');
       this.$router.push('/');
       return;
     }
     setTimeout(() => {
       this.showPage = true;
       this.angel = new Angel(angel);
-      setTimeout(() => {
-          this.showFooter = true;
-      }, animationDelays.footer);
+      this.$nextTick(() => {
+        this.updateContentHeight();
+        setTimeout(() => {
+            this.showFooter = true;
+        }, animationDelays.footer);
+      });
     }, animationDelays.pageMounted);
+  }
+
+  public updateContentHeight() {
+    if (isPortraitScreen()) return;
+    const angelImage: HTMLElement = document.querySelector('.angel-image') as HTMLElement;
+    const contentContainer: HTMLElement = document.querySelector('.content') as HTMLElement;
+    if (!angelImage || !contentContainer) {
+      return;
+    }
+    contentContainer.style.maxHeight = `${angelImage.offsetHeight}px`;
   }
 
   public onShare(method: shareMethod) {
@@ -151,7 +164,7 @@ export default class SlugPage extends Vue {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      max-height: 90%;
+      max-height: none;
 
       .angel-name {
         border-bottom: 2px solid white;
@@ -217,8 +230,6 @@ export default class SlugPage extends Vue {
       padding-top: 1rem;
 
       .content {
-        max-height: none;
-
         .angel-description, .angel-phrase {
           text-align: justify;
           font-size: 2.1rem;

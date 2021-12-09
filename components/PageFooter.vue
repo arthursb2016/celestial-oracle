@@ -29,6 +29,7 @@ export default class PageFooter extends Vue {
 <style lang="scss" scoped>
 .page-footer {
   position: relative;
+  flex-grow: 1;
   display: flex;
   align-items: flex-end;
   opacity: 0.8;
