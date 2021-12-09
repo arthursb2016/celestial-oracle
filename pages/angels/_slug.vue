@@ -11,7 +11,7 @@
           class="angel-image"
         />
         <div>
-          Image from:
+          Painted by:
         </div>
         <div>
           <a
@@ -28,7 +28,7 @@
           <h2 class="angel-name">
             {{ angel.name }}
           </h2>
-          <div class="angel-description mb-8">
+          <div class="angel-description">
             {{ angel.description }}
           </div>
           <div class="primary--text angel-phrase">
@@ -147,9 +147,9 @@ export default class SlugPage extends Vue {
     font-size: 1.3rem;
 
     .angel-image {
-      max-width: 20rem;
-      margin-bottom: 2rem;
-      max-height: 75%;
+      width: 20rem;
+      margin-bottom: 1rem;
+      max-height: 76%;
     }
   }
 
@@ -167,8 +167,9 @@ export default class SlugPage extends Vue {
       max-height: none;
 
       .angel-name {
-        border-bottom: 2px solid white;
         margin-bottom: 1rem;
+        padding: 0;
+        display: flex;
       }
 
       .angel-description, .angel-phrase {
@@ -178,6 +179,7 @@ export default class SlugPage extends Vue {
 
       .angel-description {
         overflow-y: auto;
+        margin-bottom: 1rem;
       }
       .angel-phrase {
         font-style: italic;
