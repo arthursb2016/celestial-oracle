@@ -1,4 +1,4 @@
-export const typewriter = (elem: HTMLElement, text: string, speed: number, onDone: Function): void => {
+export default function(elem: HTMLElement, text: string, speed: number, onDone: Function): void {
   let array = text.split('');
   let timer: number;
 
