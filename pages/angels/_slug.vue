@@ -111,6 +111,7 @@ export default class SlugPage extends Vue {
         this.updateContentHeight();
         setTimeout(() => {
             this.showFooter = true;
+            window.addEventListener('resize', this.updateContentHeight);
         }, animationDelays.footer);
       });
     }, animationDelays.pageMounted);
