@@ -161,6 +161,9 @@ export default class SlugPage extends Vue {
       width: 20rem;
       margin-bottom: 1rem;
       max-height: 76%;
+      border-radius: 2rem;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 
@@ -231,26 +234,31 @@ export default class SlugPage extends Vue {
     .image-column {
       align-items: center;
       font-size: 1.6rem;
-      margin-bottom: 1.5rem;
-
+      margin-bottom: 2rem;
       .angel-image {
-        max-width: 14rem;
+        width: 80%;
+        margin: auto;
+        border-radius: 2rem;
       }
     }
 
     .content-column {
       padding-left: 0rem;
-      padding-top: 1rem;
 
       .content {
+        .angel-name {
+          justify-content: center;
+        }
+        .angel-description {
+          margin-bottom: 2rem;
+        }
         .angel-description, .angel-phrase {
           text-align: justify;
           font-size: 2.1rem;
           overflow: hidden;
         }
-
         .angel-phrase {
-          margin-bottom: 2rem;
+          margin-bottom: 4rem;
         }
       }
     }
