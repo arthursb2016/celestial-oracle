@@ -132,13 +132,9 @@ export default class IndexPage extends Vue {
     }, animationDelays.multipleAnimator);
   }
   public onClick() {
-    const index = Math.floor(Math.random() * this.angels.length);
-    let angel = this.angels[index];
     const shared = location.search.split('s=')[1];
-    if (shared) {
-      const slug = atob(decodeURIComponent(shared));
-      angel = this.angels.find(a => a.slug === slug) || angel;
-    }
+    const index = (shared || Math.floor(Math.random() * this.angels.length)) as number;
+    let angel = this.angels[index];
     this.$router.push(`/angels/${angel.slug}`);
   }
 };
