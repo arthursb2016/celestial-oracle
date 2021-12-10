@@ -2,18 +2,18 @@
 
 @mixin pretty-scroll-bar {
   scrollbar-width: thin;
-  scrollbar-color: $harsh-golden $light-golden;
+  scrollbar-color: $light-golden $harsh-golden;
   &::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-    background-color: $light-golden;
+    background-color: $harsh-golden;
   }
   &::-webkit-scrollbar-track {
-    background: $light-golden;
+    background: $harsh-golden;
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: $harsh-golden;
-    border: 2px solid $light-golden;
+    background-color: $light-golden;
+    border: 2px solid $harsh-golden;
   }
 }
