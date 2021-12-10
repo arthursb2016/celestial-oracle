@@ -142,6 +142,8 @@ export default class SlugPage extends Vue {
 };
 </script>
 <style lang="scss" scoped>
+@import '~/assets/pretty-scroll-bar.scss';
+
 .author-container {
   ::v-deep .v-icon {
     font-size: 1.6rem;
@@ -193,6 +195,7 @@ export default class SlugPage extends Vue {
       }
 
       .angel-description {
+        @include pretty-scroll-bar;
         overflow-y: auto;
         margin-bottom: 1rem;
       }
@@ -229,6 +232,7 @@ export default class SlugPage extends Vue {
 @media (orientation: portrait) {
   .body {
     flex-direction: column;
+    @include pretty-scroll-bar;
     overflow-y: auto;
     overflow-x: hidden;
 
