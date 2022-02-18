@@ -138,7 +138,7 @@ export default class SlugPage extends Vue {
     const m1 = 'Hey there!\n';
     const m2 = 'I just met an actual Angel and wanted to share a very special message from it with you.\n\n';
     const m3 = 'Check the following website, it was built to preserve and share a very special book\'s content.\n\n';
-    const m4 = '\n\nTake 2 minutes from your day to read an inspirational message.\nOpen it up and then tell me later what you have felt or learned.\n\nI look forward to hear from you soon my dear, I wish you very well :)';
+    const m4 = '\n\nTake a minute from your day to read an inspirational message.\nOpen it up and then tell me later what you have felt or learned.\n\nI look forward to hear from you soon my dear, I wish you very well :)';
     const message = `${m1}${m2}${m3}${origin}?s=${index}${m4}`;
     if (method === 'whatsapp') {
       window.open(`https://wa.me?text=${encodeURIComponent(message)}`, '_blank');
