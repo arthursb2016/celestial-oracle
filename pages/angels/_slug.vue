@@ -47,6 +47,9 @@
               :src="require('~/assets/icons/whatsapp.svg?inline')"
               @click="onShare('whatsapp')"
             />
+            <v-icon class="share-icon">
+              mdi-clipboard-text-multiple-outline
+            </v-icon>
           </div>
         </page-footer>
       </div>
@@ -230,6 +233,13 @@ export default class SlugPage extends Vue {
   ::v-deep .v-image {
     width: 2.2rem;
     margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  .share-icon {
+    color: $text-beige;
+    font-size: 2rem;
+    margin-left: 0.75rem;
     cursor: pointer;
   }
 }
